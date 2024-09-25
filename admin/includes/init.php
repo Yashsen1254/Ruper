@@ -5,7 +5,7 @@ define("BASE_URL", "/ruper/admin");
 
 date_default_timezone_set('Asia/Kolkata');
 
-$connection = new PDO("mysql:host=localhost;port=3306;dbname=fidalgo", "root", "");
+$connection = new PDO("mysql:host=localhost;port=3306;dbname=ruper", "root", "");
 
 function pathOf($path)
 {

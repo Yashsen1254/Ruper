@@ -2,10 +2,10 @@
     require '../../includes/init.php';
     header('Content-Type: application/json');
 
-    $Id = $_POST['CategoryId'];
+    $Id = $_POST['Id'];
     $Name = $_POST['Name'];
 
-    $query = "UPDATE categories SET Name = ? WHERE CategoryId = ?";
+    $query = "UPDATE categories SET Name = ? WHERE Id = ?";
     $param = [$Name, $Id];
 
     $result = execute($query, $param);

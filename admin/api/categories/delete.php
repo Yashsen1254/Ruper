@@ -4,7 +4,7 @@
 
     $Id = $_POST['Id'];
 
-    $query = "DELETE FROM categories WHERE CategoryId = ?";
+    $query = "DELETE FROM categories WHERE Id = ?";
     $param = [$Id];
 
     $result = execute($query, $param);
