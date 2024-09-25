@@ -2,7 +2,7 @@
 require '../../includes/init.php';
 
 $index = 0;
-$feedbacks = select("SELECT * FROM feedbacks");
+$checkouts = select('SELECT * FROM Checkouts');
 
 include pathOf('includes/header.php');
 include pathOf('includes/sidebar.php');
@@ -10,6 +10,8 @@ include pathOf('includes/navbar.php');
 ?>
 
 <body class="page-sidebar-collapsed">
+
+
     <div class="page-container">
         <div class="page-content">
             <div class="main-wrapper">
@@ -17,32 +19,44 @@ include pathOf('includes/navbar.php');
                     <div class="col">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Feedbacks</h5>
+                                <h5 class="card-title">Checkouts</h5>
                                 <table id="zero-conf" class="display" style="width:100%">
                                     <thead>
                                         <tr>
                                             <th>Sr No.</th>
-                                            <th>Name</th>
-                                            <th>Rating</th>
-                                            <th>Comment</th>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>Email</th>
+                                            <th>Phone</th>
+                                            <th>ZipCode</th>
+                                            <th>City</th>
+                                            <th>Address</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach ($feedbacks as $feedback): ?>
+                                        <?php foreach ($checkouts as $checkout): ?>
                                             <tr>
                                                 <td><?= $index += 1 ?></td>
-                                                <td><?= $feedback['Name'] ?></td>
-                                                <td><?= $feedback['Rating'] ?></td>
-                                                <td><?= $feedback['Comment'] ?></td>
+                                                <td><?= $checkout['FirstName'] ?></td>
+                                                <td><?= $checkout['LastName'] ?></td>
+                                                <td><?= $checkout['Email'] ?></td>
+                                                <td><?= $checkout['Phone'] ?></td>
+                                                <td><?= $checkout['ZipCode'] ?></td>
+                                                <td><?= $checkout['City'] ?></td>
+                                                <td><?= $checkout['StreetAddress'] ?></td>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>
                                     <tfoot>
                                         <tr>
                                             <th>Sr No.</th>
-                                            <th>Name</th>
-                                            <th>Rating</th>
-                                            <th>Comment</th>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>Email</th>
+                                            <th>Phone</th>
+                                            <th>ZipCode</th>
+                                            <th>City</th>
+                                            <th>Address</th>
                                         </tr>
                                     </tfoot>
                                 </table>

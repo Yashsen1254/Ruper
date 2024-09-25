@@ -2,7 +2,7 @@
 require '../../includes/init.php';
 
 $index = 0;
-$feedbacks = select("SELECT * FROM feedbacks");
+$payments = select("SELECT Payments.Id, Payments.Cash, Orders.Id AS 'OrderId' FROM Payments INNER JOIN Orders ON Payments.OrderId = Orders.Id");
 
 include pathOf('includes/header.php');
 include pathOf('includes/sidebar.php');
@@ -17,32 +17,29 @@ include pathOf('includes/navbar.php');
                     <div class="col">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Feedbacks</h5>
+                                <h5 class="card-title">Payment</h5>
                                 <table id="zero-conf" class="display" style="width:100%">
                                     <thead>
                                         <tr>
                                             <th>Sr No.</th>
-                                            <th>Name</th>
-                                            <th>Rating</th>
-                                            <th>Comment</th>
+                                            <th>Order</th>
+                                            <th>Cash</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach ($feedbacks as $feedback): ?>
+                                        <?php foreach ($payments as $payment): ?>
                                             <tr>
                                                 <td><?= $index += 1 ?></td>
-                                                <td><?= $feedback['Name'] ?></td>
-                                                <td><?= $feedback['Rating'] ?></td>
-                                                <td><?= $feedback['Comment'] ?></td>
+                                                <td><?= $payment['OrderId'] ?></td>
+                                                <td><?= $payment['Cash'] ?></td>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>
                                     <tfoot>
                                         <tr>
                                             <th>Sr No.</th>
-                                            <th>Name</th>
-                                            <th>Rating</th>
-                                            <th>Comment</th>
+                                            <th>Order</th>
+                                            <th>Cash</th>
                                         </tr>
                                     </tfoot>
                                 </table>
