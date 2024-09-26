@@ -1,5 +1,9 @@
 <?php
     require '../includes/init.php';
+
+	$Id = $_POST['Id'];
+	$products = selectOne("SELECT * FROM products WHERE Id = $Id");
+
     include pathOf('includes/header.php');
     include pathOf('includes/navbar.php');
 ?>
@@ -22,7 +26,6 @@
 								</div>
 							</div>
 						</div>
-
 						<div id="content" class="site-content" role="main">
 							<div class="section-padding">
 								<div class="section-container p-l-r">
@@ -45,19 +48,19 @@
 																<tr class="cart-item">		
 																	<td class="product-thumbnail">
 																		<a href="shop-details.html">
-																			<img width="600" height="600" src="<?= urlOf('assets/media/product/3.jpg') ?>" class="product-image" alt="">
+																			<img width="600" height="600" src="<?= urlOf('admin/assets/images/uploads/') . $products['ImageFileName'] ?>" class="product-image" alt="">
 																		</a>				
 																		<div class="product-name">
-																			<a href="shop-details.html">Chair Oak Matt Lacquered</a>								
+																			<a href="shop-details.html"><?= $products['Name'] ?></a>								
 																		</div>
 																	</td>
 																	<td class="product-price">
-																		<span class="price">$150.00</span>
+																		<span class="price">₹<?= $products['Price'] ?></span>
 																	</td>
 																	<td class="product-quantity">
 																		<div class="quantity">
 																			<button type="button" class="minus">-</button>	
-																			<input type="number" class="qty" step="1" min="0" max="" name="quantity" value="2" title="Qty" size="4" placeholder="" inputmode="numeric" autocomplete="off">
+																			<input type="number" class="qty" step="1" min="0" max="10" name="quantity" value="2" title="Qty" size="4" placeholder="" inputmode="numeric" autocomplete="off">
 																			<button type="button" class="plus">+</button>
 																		</div>
 																	</td>
@@ -65,7 +68,7 @@
 																		<span>$300.00</span>
 																	</td>
 																	<td class="product-remove">
-																		<a href="#" class="remove">×</a>								
+																		<a href="#" class="remove">×</a>						
 																	</td>
 																</tr>
 																<tr>
@@ -100,20 +103,17 @@
 										</div>
 									</div>
 									<div class="shop-cart-empty">
-										<div class="notices-wrapper">
-											<p class="cart-empty">Your cart is currently empty.</p>
-										</div>	
 										<div class="return-to-shop">
-											<a class="button" href="shop-grid-left.html">
+											<a class="button" href="<?= urlOf('pages/shop.php') ?>">
 												Return to shop		
 											</a>
 										</div>
 									</div>
 								</div>
 							</div>
-						</div><!-- #content -->
-					</div><!-- #primary -->
-				</div><!-- #main-content -->
+						</div>
+					</div>
+				</div>
 			</div>
 <?php
     include pathOf('includes/footer.php');

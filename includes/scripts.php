@@ -10,3 +10,4 @@
 <script src="<?= urlOf('assets/libs/slider/js/draggable-0.1.js') ?>"></script>
 <script src="<?= urlOf('assets/libs/slider/js/jquery.slider.js') ?>"></script>
 <script src="<?= urlOf('assets/libs/elevatezoom/js/jquery.elevatezoom.js') ?>"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
