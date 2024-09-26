@@ -52,14 +52,10 @@ include pathOf('includes/navbar.php');
                                                                         </div>
                                                                         <div class="product-button">
                                                                             <div class="btn-add-to-cart" data-title="Add to cart">
-                                                                                <!-- <form action="./cart.php" method="post">
-                                                                                <input type="hidden" name="Id" id="Id" value="<?= $product['Id'] ?>">
-                                                                                <button type="submit" class="product-btn">Add to cart</button>
-                                                                            </form> -->
-                                                                                <button type="submit" class="product-btn" onclick="insertData(<?= $product['Id'] ?>)">Add to cart</button>
+                                                                                <button type="submit" class="product-btn" onclick="addToCart(<?= $product['Id'] ?>)">Add to cart</button>
                                                                             </div>
                                                                             <div class="btn-wishlist" data-title="Wishlist">
-                                                                                <button class="product-btn">Add to wishlist</button>
+                                                                            <button type="submit" class="product-btn" onclick="addToWishlist(<?= $product['Id'] ?>)">Add to wishlist</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -86,7 +82,7 @@ include pathOf('includes/navbar.php');
         </div>
     </div>
     <script>
-        function insertData(ProductId) {
+        function addToCart(ProductId) {
             // Properly embed the PHP value into JavaScript as a boolean
             var isLoggedIn = <?= isset($_SESSION['UserId']) ? 'true' : 'false' ?>;
             var UserId = <?= isset($_SESSION['UserId']) ? $_SESSION['UserId'] : 'null' ?>;
@@ -110,6 +106,36 @@ include pathOf('includes/navbar.php');
                 success: function(response) {
                     console.log(response.success);
                     alert("Product added to cart");
+                    location.reload();
+                }
+            });
+        }
+
+        function addToWishlist(ProductId) {
+            // Properly embed the PHP value into JavaScript as a boolean
+            var isLoggedIn = <?= isset($_SESSION['UserId']) ? 'true' : 'false' ?>;
+            var UserId = <?= isset($_SESSION['UserId']) ? $_SESSION['UserId'] : 'null' ?>;
+            console.log(ProductId);
+            console.log(UserId);
+
+            // Check if the user is not logged in
+            if (!isLoggedIn) {
+                alert("Please log in to add products to the wishlist.");
+                window.location.href = "./login.php";
+                return;
+            }
+            
+            $.ajax({
+                url: '../admin/api/wishlists/insert.php',
+                type: 'POST',
+                data: {
+                    ProductId: ProductId,
+                    UserId: UserId
+                },
+                success: function(response) {
+                    console.log(response.success);
+                    alert("Product added to Wishlist");
+                    location.reload();
                 }
             });
         }
