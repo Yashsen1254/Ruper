@@ -4,10 +4,10 @@
     header('Content-Type: application/json');
 
     $ProductId = $_POST['ProductId'];
-    $UserId = $_POST['UserId'];
+    $ClientId = $_POST['UserId'];
 
-    $query = "INSERT INTO carts (ProductId, UserId) VALUES (?, ?)";
-    $param = [$ProductId, $UserId];
+    $query = "INSERT INTO carts (ProductId, ClientId) VALUES (?, ?)";
+    $param = [$ProductId, $ClientId];
 
     execute($query, $param);
 
