@@ -1,3 +1,7 @@
+<?php
+	$ClientId = $_SESSION['UserId'];
+	$carts = select("SELECT carts.*, products.Name, products.Price, products.ImageFileName FROM carts JOIN products ON carts.ProductId = products.Id WHERE carts.ClientId = $ClientId");
+?>
 <header id="site-header" class="site-header header-v1">
 				<div class="header-mobile">
 					<div class="section-padding">
@@ -41,7 +45,7 @@
 														<li class="mini-cart-item">
 															<a href="#" class="remove" title="Remove this item"><i class="icon_close"></i></a>
 															<a href="shop-details.html" class="product-image"><img width="600" height="600" src="<?= urlOf('assets/media/product/3.jpg') ?>" alt=""></a>
-															<a href="shop-details.html" class="product-name">Chair Oak Matt Lacquered</a>		
+															<a href="shop-details.html" class="product-name"><?= $carts['Name'] ?></a>		
 															<div class="quantity">Qty: 1</div>
 															<div class="price">$150.00</div>
 														</li>
@@ -137,15 +141,17 @@
 															</ul>
 														</div>
 														<div class="cart-list-wrap">
+															<?php foreach ($carts as $cart) { ?>
 															<ul class="cart-list ">
 																<li class="mini-cart-item">
-																	<a href="#" class="remove" title="Remove this item"><i class="icon_close"></i></a>
-																	<a href="shop-details.html" class="product-image"><img width="600" height="600" src="media/product/3.jpg" alt=""></a>
-																	<a href="shop-details.html" class="product-name">Chair Oak Matt Lacquered</a>		
-																	<div class="quantity">Qty: 1</div>
-																	<div class="price">$150.00</div>
+																	<button class="remove" title="Remove this item" onclick="deleteCartItem(<?= $cart['Id'] ?>)">X</button>
+																	<a href="shop-details.html" class="product-image"><img width="600" height="600" src="<?= urlOf('admin/assets/images/uploads/') . $cart['ImageFileName'] ?>" alt=""></a>
+																	<a href="shop-details.html" class="product-name"><?= $cart['Name'] ?></a>		
+																	<div class="quantity"><?= $cart['Quantity'] ?> Quantity</div>
+																	<div class="price">₹<?= $cart['Price'] ?></div>
 																</li>
 															</ul>
+															<?php } ?>
 															<div class="total-cart">
 																<div class="title-total">Total: </div>
 																<div class="total-price"><span>$100.00</span></div>
@@ -169,3 +175,18 @@
 					</div>
 				</div>
 			</header>
+
+			<script>
+				function deleteCartItem(Id) {
+					$.ajax({
+						url: "../admin/api/carts/delete.php",
+						method: "POST",
+						data: {
+							Id: Id
+						},
+						success: function(response) {
+							location.reload();
+						}
+					})
+				}
+			</script>
