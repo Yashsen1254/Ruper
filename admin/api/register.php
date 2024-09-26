@@ -2,12 +2,13 @@
     require '../includes/init.php';
     header('Content-Type: application/json');
 
-    $Username = $_POST['Username'];
+    $Name = $_POST['Name'];
+    $Username = $_POST['UserName'];
     $Email = $_POST['Email'];
     $Password = $_POST['Password'];
 
-    $query = "INSERT INTO users (Username, Email, Password) VALUES (?, ?, ?)";
-    $param = [$Username, $Email, $Password];
+    $query = "INSERT INTO Clients (Name, UserName, Email, Password) VALUES (?, ?, ?, ?)";
+    $param = [$Name, $Username, $Email, $Password];
 
     execute($query, $param);
 

@@ -25,13 +25,13 @@
                           <p class="card-text"><?= $product['Price'] ?></p>
                           <div class="d-flex justify-content-between align-items-center mt-4">
                             <form action="./update.php" method="post">
-                                <input type="hidden" name="ProductId" id="ProductId" value="<?= $product['ProductId'] ?>">
+                                <input type="hidden" name="ProductId" id="ProductId" value="<?= $product['Id'] ?>">
                                 <button type="submit" class="btn btn-outline-success  mb-2">
                                     Update
                                 </button>
                             </form>
                             <button type="button" class="btn btn-outline-danger  mb-2"
-                                onclick="deleteData(<?= $product['ProductId'] ?>)">
+                                onclick="deleteData(<?= $product['Id'] ?>)">
                                 Delete
                             </button>
                             </div>
