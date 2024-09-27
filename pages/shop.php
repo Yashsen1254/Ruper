@@ -50,6 +50,7 @@ include pathOf('includes/navbar.php');
                                                                                 <img width="600" height="600" src="<?= urlOf('admin/assets/images/uploads/') . $product['ImageFileName'] ?>" class="hover-image back" alt="">
                                                                             </a>
                                                                         </div>
+                                                                        <input type="hidden" id="Quantity" name="Quantity" value="1">
                                                                         <div class="product-button">
                                                                             <div class="btn-add-to-cart" data-title="Add to cart">
                                                                                 <button type="submit" class="product-btn" onclick="addToCart(<?= $product['Id'] ?>)">Add to cart</button>
@@ -88,7 +89,7 @@ include pathOf('includes/navbar.php');
             var UserId = <?= isset($_SESSION['UserId']) ? $_SESSION['UserId'] : 'null' ?>;
             console.log(ProductId);
             console.log(UserId);
-
+            var Quantity = $("#Quantity").val();
             // Check if the user is not logged in
             if (!isLoggedIn) {
                 alert("Please log in to add products to the cart.");
@@ -101,7 +102,8 @@ include pathOf('includes/navbar.php');
                 type: 'POST',
                 data: {
                     ProductId: ProductId,
-                    UserId: UserId
+                    UserId: UserId,
+                    Quantity: Quantity
                 },
                 success: function(response) {
                     console.log(response.success);
