@@ -32,59 +32,6 @@ include pathOf('includes/navbar.php');
 								<div class="shop-cart">
 									<div class="row">
 										<div class="col-xl-8 col-lg-12 col-md-12 col-12">
-											<!-- <form class="cart-form" action="#" method="post">
-												<div class="table-responsive">
-													<table class="cart-items table" cellspacing="0">
-														<thead>
-															<tr>
-																<th class="product-thumbnail">Product</th>
-																<th class="product-price">Price</th>
-																<th class="product-quantity">Quantity</th>
-																<th class="product-subtotal">Subtotal</th>
-																<th class="product-remove">&nbsp;</th>
-															</tr>
-														</thead>
-														<tbody>
-															<?php foreach ($carts as $cart): ?>
-																<tr class="cart-item">
-																	<td class="product-thumbnail">
-																		<a href="shop-details.html">
-																			<img width="600" height="600" src="<?= urlOf('admin/assets/images/uploads/') . $cart['ImageFileName'] ?>" class="product-image" alt="">
-																		</a>
-																		<div class="product-name">
-																			<a href="shop-details.html"><?= $cart['Name'] ?></a>
-																		</div>
-																	</td>
-																	<td class="product-price">
-																		<span class="price">₹<?= $cart['Price'] ?></span>
-																	</td>
-																	<td class="product-quantity">
-																		<div class="quantity">
-																			<button type="button" class="minus">-</button>
-																			<input type="number" class="qty" step="1" min="0" max="10" name="quantity" value="<?= $cart['Quantity'] ?>" title="Qty" size="4" placeholder="" inputmode="numeric" autocomplete="off">
-																			<button type="button" class="plus">+</button>
-																		</div>
-																	</td>
-																	<td class="product-subtotal">
-																		<span>₹<?= $cart['Price'] * $cart['Quantity']; ?></span>
-																	</td>
-																	<td class="product-remove">
-																		<a href="#" class="remove">×</a>
-																	</td>
-																</tr>
-															<?php endforeach; ?>
-															<tr>
-																<td colspan="6" class="actions">
-																	<div class="bottom-cart">
-																		<h2><a href="<?= urlOf('pages/shop.php') ?>">Continue Shopping</a></h2>
-																		<button type="submit" name="update_cart" class="button" value="Update cart">Update cart</button>
-																	</div>
-																</td>
-															</tr>
-														</tbody>
-													</table>
-												</div>
-											</form> -->
 											<form class="cart-form" method="post">
 												<div class="table-responsive">
 													<table class="cart-items table" cellspacing="0">

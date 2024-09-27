@@ -45,7 +45,7 @@ include pathOf('includes/navbar.php');
                                                                 <div class="products-entry clearfix product-wapper">
                                                                     <div class="products-thumb">
                                                                         <div class="product-thumb-hover">
-                                                                            <a href="shop-details.html">
+                                                                            <a href="">
                                                                                 <img width="600" height="600" src="<?= urlOf('admin/assets/images/uploads/') . $product['ImageFileName'] ?>" class="post-image" alt="">
                                                                                 <img width="600" height="600" src="<?= urlOf('admin/assets/images/uploads/') . $product['ImageFileName'] ?>" class="hover-image back" alt="">
                                                                             </a>
@@ -61,7 +61,7 @@ include pathOf('includes/navbar.php');
                                                                     </div>
                                                                     <div class="products-content">
                                                                         <div class="contents text-center">
-                                                                            <h3 class="product-title"><a href="shop-details.html"><?= $product['Name'] ?></a></h3>
+                                                                            <h3 class="product-title"><a href=""><?= $product['Name'] ?></a></h3>
                                                                             <span class="price">₹<?= $product['Price'] ?></span>
                                                                         </div>
                                                                     </div>

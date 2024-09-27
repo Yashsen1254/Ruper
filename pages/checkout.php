@@ -1,5 +1,10 @@
 <?php
     require '../includes/init.php';
+
+	$ClientId = $_SESSION['UserId'];
+	$carts = select("SELECT carts.*, products.Name, products.Price, products.ImageFileName FROM carts JOIN products ON carts.ProductId = products.Id WHERE carts.ClientId = $ClientId");
+
+
     include pathOf('includes/header.php');
     include pathOf('includes/navbar.php');
 ?>
@@ -35,77 +40,38 @@
 															<div class="billing-fields-wrapper">
 																<p class="form-row form-row-first validate-required">
 																	<label>First name <span class="required" title="required">*</span></label>
-																	<span class="input-wrapper"><input type="text" class="input-text" name="billing_first_name" value=""></span>
+																	<span class="input-wrapper"><input type="text" class="input-text" id="FirstName" name="FirstName"></span>
 																</p>
 																<p class="form-row form-row-last validate-required">
 																	<label>Last name <span class="required" title="required">*</span></label>
-																	<span class="input-wrapper"><input type="text" class="input-text" name="billing_last_name" value=""></span>
+																	<span class="input-wrapper"><input type="text" class="input-text" id="LastName" name="LastName"></span>
 																</p>
-																<p class="form-row form-row-wide">
-																	<label>Company name <span class="optional">(optional)</span></label>
-																	<span class="input-wrapper"><input type="text" class="input-text" name="billing_company" value=""></span>
-																</p>
-																<p class="form-row form-row-wide validate-required">
-																	<label>Country / Region <span class="required" title="required">*</span></label>
+																<p class="form-row form-row-wide validate-required validate-email">
+																	<label>Email address <span class="required" title="required">*</span></label>
 																	<span class="input-wrapper">
-																		<select name="billing_country" class="country-select custom-select">
-																			<option value="">Select a country / region…</option>
-																			<option value="AF">Afghanistan</option>
-																			<option value="AX">Åland Islands</option>
-																			<option value="AL">Albania</option>
-																			<option value="DZ">Algeria</option>
-																			<option value="AS">American Samoa</option>
-																			<option value="AD">Andorra</option>
-																		</select>
-																	</span>
-																</p>
-																<p class="form-row address-field validate-required form-row-wide">
-																	<label>Street address <span class="required" title="required">*</span></label>
-																	<span class="input-wrapper">
-																		<input type="text" class="input-text" name="billing_address_1" placeholder="House number and street name" value="">
-																	</span>
-																</p>
-																<p class="form-row address-field form-row-wide">
-																	<label>Apartment, suite, unit, etc.&nbsp;<span class="optional">(optional)</span></label>
-																	<span class="input-wrapper">
-																		<input type="text" class="input-text" name="billing_address_2" placeholder="Apartment, suite, unit, etc. (optional)" value="">
-																	</span>
-																</p>
-																<p class="form-row address-field validate-required form-row-wide">
-																	<label for="billing_city" class="">Town / City <span class="required" title="required">*</span></label>
-																	<span class="input-wrapper">
-																		<input type="text" class="input-text" name="billing_city" value="">
-																	</span>
-																</p>
-																<p class="form-row address-field validate-required validate-state form-row-wide">
-																	<label>State / County <span class="required" title="required">*</span></label>
-																	<span class="input-wrapper">
-																		<select name="billing_state" class="state-select custom-select">
-																			<option value="">Select a state / county…</option>
-																			<option value="VN">Vinnytsia Oblast</option>
-																			<option value="VL">Volyn Oblast</option>
-																			<option value="DP">Dnipropetrovsk Oblast</option>
-																			<option value="DT">Donetsk Oblast</option>
-																			<option value="ZT">Zhytomyr Oblast</option>
-																		</select>
-																	</span>
-																</p>
-																<p class="form-row address-field validate-required validate-postcode form-row-wide">
-																	<label>Postcode / ZIP <span class="required" title="required">*</span></label>
-																	<span class="input-wrapper">
-																		<input type="text" class="input-text" name="billing_postcode" value="">
+																		<input type="email" class="input-text" id="Email" name="Email">
 																	</span>
 																</p>
 																<p class="form-row form-row-wide validate-required validate-phone">
 																	<label>Phone <span class="required" title="required">*</span></label>
 																	<span class="input-wrapper">
-																		<input type="tel" class="input-text" name="billing_phone" value="">
+																		<input type="tel" class="input-text" id="Phone" name="Phone">
 																	</span>
 																</p>
-																<p class="form-row form-row-wide validate-required validate-email">
-																	<label>Email address <span class="required" title="required">*</span></label>
+																<p class="form-row address-field validate-required validate-postcode form-row-wide">
+																	<label>Postcode / ZIP <span class="required" title="required">*</span></label>
 																	<span class="input-wrapper">
-																		<input type="email" class="input-text" name="billing_email" value="" autocomplete="off">
+																		<input type="text" class="input-text" id="ZipCode" name="ZipCode">
+																	</span>
+																</p>
+																<p class="form-row form-row-wide">
+																	<label>City <span class="optional"></span></label>
+																	<span class="input-wrapper"><input type="text" class="input-text" id="City" name="City"></span>
+																</p>
+																<p class="form-row address-field validate-required form-row-wide">
+																	<label>Street address <span class="required" title="required">*</span></label>
+																	<span class="input-wrapper">
+																		<input type="text" class="input-text" id="StreetAddress" name="StreetAddress">
 																	</span>
 																</p>
 															</div>
@@ -117,101 +83,7 @@
 																	<span>Create an account?</span>
 																</label>
 															</p>
-															<div class="create-account">
-																<p class="form-row validate-required">
-																	<label>Create account password <span class="required" title="required">*</span></label>
-																	<span class="input-wrapper password-input">
-																		<input type="password" class="input-text" name="account_password" value="" autocomplete="off">
-																		<span class="show-password-input"></span>
-																	</span>
-																</p>								
-																<div class="clear"></div>
-															</div>
 														</div>
-													</div>
-													<div class="shipping-fields">
-														<p class="form-row form-row-wide ship-to-different-address">
-															<label class="checkbox">
-																<input class="input-checkbox" type="checkbox" name="ship_to_different_address" value="1"> 
-																<span>Ship to a different address?</span>
-															</label>
-														</p>
-														<div class="shipping-address">
-															<p class="form-row form-row-first validate-required">
-																<label>First name <span class="required" title="required">*</span></label>
-																<span class="input-wrapper">
-																	<input type="text" class="input-text" name="shipping_first_name" value="">
-																</span>
-															</p>
-															<p class="form-row form-row-last validate-required">
-																<label>Last name <span class="required" title="required">*</span></label>
-																<span class="input-wrapper">
-																	<input type="text" class="input-text" name="shipping_last_name" value="">
-																</span>
-															</p>
-															<p class="form-row form-row-wide">
-																<label>Company name <span class="optional">(optional)</span></label>
-																<span class="input-wrapper">
-																	<input type="text" class="input-text" name="shipping_company" value="">
-																</span>
-															</p>
-															<p class="form-row form-row-wide address-field validate-required">
-																<label for="shipping_country" class="">Country / Region <span class="required" title="required">*</span></label>
-																<span class="input-wrapper">
-																	<select name="billing_state" class="state-select custom-select">
-																		<option value="">Select a country / region…</option>
-																		<option value="VN">Vinnytsia Oblast</option>
-																		<option value="VL">Volyn Oblast</option>
-																		<option value="DP">Dnipropetrovsk Oblast</option>
-																		<option value="DT">Donetsk Oblast</option>
-																		<option value="ZT">Zhytomyr Oblast</option>
-																	</select>
-																</span>
-															</p>
-															<p class="form-row address-field validate-required form-row-wide">
-																<label>Street address <span class="required" title="required">*</span></label>
-																<span class="input-wrapper">
-																	<input type="text" class="input-text" name="shipping_address_1" placeholder="House number and street name" value="">
-																</span>
-															</p>
-															<p class="form-row address-field form-row-wide">
-																<label>Apartment, suite, unit, etc. <span class="optional">(optional)</span></label>
-																<span class="input-wrapper">
-																	<input type="text" class="input-text" name="shipping_address_2" placeholder="Apartment, suite, unit, etc. (optional)" value="">
-																</span>
-															</p>
-															<p class="form-row address-field validate-required form-row-wide">
-																<label>Town / City <span class="required" title="required">*</span></label>
-																<span class="input-wrapper"><input type="text" class="input-text" name="shipping_city" value=""></span>
-															</p>
-															<p class="form-row address-field validate-required validate-state form-row-wide">
-																<label for="shipping_state" class="">State / County <span class="required" title="required">*</span></label>
-																<span class="input-wrapper">
-																	<select name="billing_state" class="state-select custom-select">
-																		<option value="">Select a state / county…</option>
-																		<option value="VN">Vinnytsia Oblast</option>
-																		<option value="VL">Volyn Oblast</option>
-																		<option value="DP">Dnipropetrovsk Oblast</option>
-																		<option value="DT">Donetsk Oblast</option>
-																		<option value="ZT">Zhytomyr Oblast</option>
-																	</select>
-																</span>
-															</p>
-															<p class="form-row address-field validate-required validate-postcode form-row-wide">
-																<label>Postcode / ZIP <span class="required" title="required">*</span></label>
-																<span class="input-wrapper">
-																	<input type="text" class="input-text" name="shipping_postcode" value="">
-																</span>
-															</p>
-														</div>
-													</div>
-													<div class="additional-fields">
-														<p class="form-row notes">
-															<label>Order notes <span class="optional">(optional)</span></label>
-															<span class="input-wrapper">
-																<textarea name="order_comments" class="input-text" placeholder="Notes about your order, e.g. special notes for delivery." rows="2" cols="5"></textarea>
-															</span>
-														</p>
 													</div>
 												</div>
 												<div class="col-xl-4 col-lg-5 col-md-12 col-12">
@@ -219,26 +91,28 @@
 														<div class="checkout-review-order-table">
 															<div class="review-order-title">Product</div>
 															<div class="cart-items">
+																<?php foreach($carts as $item): ?>
 																<div class="cart-item">
 																	<div class="info-product">
 																		<div class="product-thumbnail">
-																			<img width="600" height="600" src="<?= urlOf('assets/media/product/3.jpg') ?>" alt="">					
+																			<img width="600" height="600" src="<?= urlOf('admin/assets/images/uploads/') . $item['ImageFileName'] ?>" alt="">					
 																		</div>
 																		<div class="product-name">
-																			Chair Oak Matt Lacquered
-																			<strong class="product-quantity">QTY : 2</strong>											
+																			<?= $item['Name'] ?>
+																			<strong class="product-quantity">QTY : <?= $item['Quantity'] ?></strong>											
 																		</div>
 																	</div>
 																	<div class="product-total">
-																		<span>$300.00</span>
+																		<span>₹<?= $item['Price'] ?></span>
 																	</div>
 																</div>
+																<?php endforeach; ?>
 															</div>
 															<div class="order-total">
 																<h2>Total</h2>
 																<div class="total-price">
 																	<strong>
-																		<span>$480.00</span>
+																		<span>₹</span>
 																	</strong> 
 																</div>
 															</div>
