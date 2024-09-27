@@ -1,6 +1,8 @@
 <?php
-	$ClientId = $_SESSION['UserId'];
-	$carts = select("SELECT carts.*, products.Name, products.Price, products.ImageFileName FROM carts JOIN products ON carts.ProductId = products.Id WHERE carts.ClientId = $ClientId");
+if (isset($_SESSION['UserId'])) {
+    $ClientId = $_SESSION['UserId'];
+    $carts = select("SELECT carts.*, products.Name, products.Price, products.ImageFileName FROM carts JOIN products ON carts.ProductId = products.Id WHERE carts.ClientId = $ClientId");
+}
 ?>
 <header id="site-header" class="site-header header-v1">
 				<div class="header-mobile">
@@ -141,7 +143,8 @@
 															</ul>
 														</div>
 														<div class="cart-list-wrap">
-															<?php foreach ($carts as $cart) { ?>
+															<?php if (isset($_SESSION['UserId'])) {
+															foreach ($carts as $cart) { ?>
 															<ul class="cart-list ">
 																<li class="mini-cart-item">
 																	<button class="remove" title="Remove this item" onclick="deleteCartItem(<?= $cart['Id'] ?>)">X</button>
@@ -151,7 +154,7 @@
 																	<div class="price">₹<?= $cart['Price'] ?></div>
 																</li>
 															</ul>
-															<?php } ?>
+															<?php }} ?>
 															<div class="total-cart">
 																<div class="title-total">Total: </div>
 																<div class="total-price"><span>$100.00</span></div>
