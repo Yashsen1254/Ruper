@@ -50,13 +50,15 @@ include pathOf('includes/navbar.php');
                                                                                 <img width="600" height="600" src="<?= urlOf('admin/assets/images/uploads/') . $product['ImageFileName'] ?>" class="hover-image back" alt="">
                                                                             </a>
                                                                         </div>
-                                                                        <input type="hidden" id="Quantity" name="Quantity" value="1">
                                                                         <div class="product-button">
-                                                                            <div class="btn-add-to-cart" data-title="Add to cart">
-                                                                                <button type="submit" class="product-btn" onclick="addToCart(<?= $product['Id'] ?>)">Add to cart</button>
-                                                                            </div>
                                                                             <div class="btn-wishlist" data-title="Wishlist">
-                                                                            <button type="submit" class="product-btn" onclick="addToWishlist(<?= $product['Id'] ?>)">Add to wishlist</button>
+                                                                                <button type="submit" class="product-btn" onclick="addToWishlist(<?= $product['Id'] ?>)">Add to wishlist</button>
+                                                                            </div>
+                                                                            <div class="btn-compare" data-title="More Info">
+                                                                                <form action="./shop-details.php" method="post">
+                                                                                    <input type="hidden" value="<?= $product['Id'] ?>" id="Id" name="Id">
+                                                                                    <button type="submit" class="product-btn">Update</button>
+                                                                                </form>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -83,35 +85,7 @@ include pathOf('includes/navbar.php');
         </div>
     </div>
     <script>
-        function addToCart(ProductId) {
-            // Properly embed the PHP value into JavaScript as a boolean
-            var isLoggedIn = <?= isset($_SESSION['UserId']) ? 'true' : 'false' ?>;
-            var UserId = <?= isset($_SESSION['UserId']) ? $_SESSION['UserId'] : 'null' ?>;
-            console.log(ProductId);
-            console.log(UserId);
-            var Quantity = $("#Quantity").val();
-            // Check if the user is not logged in
-            if (!isLoggedIn) {
-                alert("Please log in to add products to the cart.");
-                window.location.href = "./login.php";
-                return;
-            }
-            
-            $.ajax({
-                url: '../admin/api/carts/insert.php',
-                type: 'POST',
-                data: {
-                    ProductId: ProductId,
-                    UserId: UserId,
-                    Quantity: Quantity
-                },
-                success: function(response) {
-                    console.log(response.success);
-                    alert("Product added to cart");
-                    location.reload();
-                }
-            });
-        }
+        
 
         function addToWishlist(ProductId) {
             // Properly embed the PHP value into JavaScript as a boolean
@@ -126,7 +100,7 @@ include pathOf('includes/navbar.php');
                 window.location.href = "./login.php";
                 return;
             }
-            
+
             $.ajax({
                 url: '../admin/api/wishlists/insert.php',
                 type: 'POST',
@@ -138,6 +112,24 @@ include pathOf('includes/navbar.php');
                     console.log(response.success);
                     alert("Product added to Wishlist");
                     location.reload();
+                }
+            });
+        }
+
+        function moreInfo(ProductId) {
+            $.ajax({
+                url: './shop-details.php',
+                type: 'POST',
+                data: {
+                    id: ProductId
+                },
+                success: function(response) {
+                    // Redirect to shop-detail.php without query parameters
+                    window.location.href = './shop-details.php';
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                    alert("An error occurred while fetching product details.");
                 }
             });
         }

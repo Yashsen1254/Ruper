@@ -7,7 +7,7 @@ $carts = select("SELECT carts.*, products.Name, products.Price, products.ImageFi
 $totalAmount = 0;
 
 foreach ($carts as $item) {
-    $totalAmount += $item['Price'];
+	$totalAmount += $item['Price'] * $item['Quantity'];
 }
 
 include pathOf('includes/header.php');
@@ -110,7 +110,7 @@ include pathOf('includes/navbar.php');
 																		</div>
 																	</div>
 																	<div class="product-total">
-																		<span>₹<?= $item['Price'] ?></span>
+																		<span>₹<?= $item['Price'] * $item['Quantity'] ?></span>
 																	</div>
 																</div>
 															<?php endforeach; ?>

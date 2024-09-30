@@ -18,6 +18,7 @@
 	<link rel="stylesheet" href="<?= urlOf('assets/css/app.css') ?>" type="text/css">
 	<link rel="stylesheet" href="<?= urlOf('assets/css/responsive.css') ?>" type="text/css">
 	<link rel="stylesheet" href="<?= urlOf('assets/libs/slider/css/jslider.css') ?>">
+	<link rel="stylesheet" href="<?= urlOf('assets/css/custom.css') ?>">
 	<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@100;200;300;400;500;600;700&amp;display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=EB+Garamond:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic&amp;display=swap" rel="stylesheet">
 </head>

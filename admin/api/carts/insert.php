@@ -5,9 +5,10 @@
 
     $ProductId = $_POST['ProductId'];
     $ClientId = $_POST['UserId'];
+    $Quantity = $_POST['Quantity'];
 
-    $query = "INSERT INTO carts (ProductId, ClientId) VALUES (?, ?)";
-    $param = [$ProductId, $ClientId];
+    $query = "INSERT INTO carts (ProductId, ClientId, Quantity) VALUES (?, ?, ?)";
+    $param = [$ProductId, $ClientId, $Quantity];
 
     execute($query, $param);
 

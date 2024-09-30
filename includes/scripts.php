@@ -10,4 +10,6 @@
 <script src="<?= urlOf('assets/libs/slider/js/draggable-0.1.js') ?>"></script>
 <script src="<?= urlOf('assets/libs/slider/js/jquery.slider.js') ?>"></script>
 <script src="<?= urlOf('assets/libs/elevatezoom/js/jquery.elevatezoom.js') ?>"></script>
+<script src="<?= urlOf('assets/js/custom.js') ?>"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

@@ -12,12 +12,22 @@
     $City = $_POST['City'];
     $StreetAddress = $_POST['StreetAddress'];
     $TotalPrice = $_POST['TotalPrice'];
-
     $query = "INSERT INTO checkouts (CartId, FirstName, LastName, Email, Phone, ZipCode, City, StreetAddress, TotalPrice) VALUES (?,?,?,?,?,?,?,?,?)";
     $param = [$CartId, $FirstName, $LastName, $Email, $Phone, $ZipCode, $City, $StreetAddress, $TotalPrice];    
-
     execute($query, $param);
-
     echo json_encode(["status" => "success", "message" => "Categories Submitted Successfully"]);
 
+    // order api
+    $cartData = select("SELECT * FROM Carts WHERE Id = $CartId");
+    $quantity = $cartData[0]['Quantity'];
+    $query = "INSERT INTO Orders (CartId, TotalQuantity, TotalPrice, Status) VALUES (?,?,?,?)";
+    $param = [$CartId, $quantity, $TotalPrice, "Pending"];
+    execute($query, $param);
+    echo json_encode(["status" => "success", "message" => "Order Submitted Successfully"]);
+
+    // $query = "DELETE FROM carts WHERE Id = ?";
+    // $param = [$CartId];
+
+    // $result = execute($query, $param);
+    // echo json_encode(["status" => "success", "message" => "Cart Deleted Successfully"]);
 ?>

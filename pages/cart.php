@@ -60,9 +60,7 @@ include pathOf('includes/navbar.php');
 																	</td>
 																	<td class="product-quantity">
 																		<div class="quantity">
-																			<button type="button" class="minus">-</button>
-																			<input type="number" class="qty" step="1" value="<?= $cart['Quantity'] ?>">
-																			<button type="button" class="plus" onclick="updateQuantity()">+</button>
+																			<input type="number" class="qty" step="1" value="<?= $cart['Quantity'] ?>" disabled>
 																		</div>
 																	</td>
 																	<td class="product-subtotal">

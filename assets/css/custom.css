@@ -1,0 +1,32 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url(../3856NeueMachina.woff2);
+}
+
+#page2 {
+    padding: 5vw 0;
+}
+
+#move {
+    display: flex;
+    padding: 3vw 0;
+    overflow: hidden;
+}
+
+.marque {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 3vw;
+    padding: 0 1.5vw;
+    transform: translateX(-100%);
+}
+
+.marque h1 {
+    font-size: 60px;
+    font-family: Roboto;
+}
+
+.marque img {
+    height: 70px;
+}

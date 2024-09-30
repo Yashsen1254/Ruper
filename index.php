@@ -621,7 +621,30 @@
 			</div>
 			
 		</div>
-
+		<div id="page2">
+        <div id="move">
+            <div class="marque">
+                <h1>RUPER FURNITURE</h1>
+                <img src="https://www.brandium.nl/wp-content/uploads/2023/07/arrow-br.svg">
+            </div>
+            <div class="marque">
+                <h1>RUPER FURNITURE</h1>
+                <img src="https://www.brandium.nl/wp-content/uploads/2023/07/arrow-br.svg">
+            </div>
+            <div class="marque">
+                <h1>RUPER FURNITURE</h1>
+                <img src="https://www.brandium.nl/wp-content/uploads/2023/07/arrow-br.svg">
+            </div>
+            <div class="marque">
+                <h1>RUPER FURNITURE</h1>
+                <img src="https://www.brandium.nl/wp-content/uploads/2023/07/arrow-br.svg">
+            </div>
+            <div class="marque">
+                <h1>RUPER FURNITURE</h1>
+                <img src="https://www.brandium.nl/wp-content/uploads/2023/07/arrow-br.svg">
+            </div>
+        </div>
+    </div>
 <?php
     include pathOf('includes/footer.php');
     include pathOf('includes/scripts.php');
