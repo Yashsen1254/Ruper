@@ -46,8 +46,8 @@ CREATE TABLE `Wishlists` (
 CREATE TABLE `Carts` (
     `Id` INT PRIMARY KEY AUTO_INCREMENT,
     `ProductId` INT NOT NULL,
-    `ClientId` INT NOT NULL,
     `Quantity` INT(11) DEFAULT 1,
+    `ClientId` INT NOT NULL,
     FOREIGN KEY (`ProductId`) REFERENCES `Products` (`Id`),
     FOREIGN KEY (`ClientId`) REFERENCES `Clients` (`Id`)
 );
