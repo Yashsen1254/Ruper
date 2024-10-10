@@ -85,7 +85,6 @@ include pathOf('includes/navbar.php');
         </div>
     </div>
     <script>
-        
 
         function addToWishlist(ProductId) {
             // Properly embed the PHP value into JavaScript as a boolean
@@ -112,24 +111,6 @@ include pathOf('includes/navbar.php');
                     console.log(response.success);
                     alert("Product added to Wishlist");
                     location.reload();
-                }
-            });
-        }
-
-        function moreInfo(ProductId) {
-            $.ajax({
-                url: './shop-details.php',
-                type: 'POST',
-                data: {
-                    id: ProductId
-                },
-                success: function(response) {
-                    // Redirect to shop-detail.php without query parameters
-                    window.location.href = './shop-details.php';
-                },
-                error: function(xhr, status, error) {
-                    console.error(error);
-                    alert("An error occurred while fetching product details.");
                 }
             });
         }

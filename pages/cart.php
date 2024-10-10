@@ -116,10 +116,6 @@ include pathOf('includes/navbar.php');
 				</div>
 			</div>
 			<script>
-				function updateQuantity() {
-
-				}
-
 				function deleteCartItem(Id) {
 					$.ajax({
 						url: "../admin/api/carts/delete.php",

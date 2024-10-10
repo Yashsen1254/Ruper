@@ -64,7 +64,7 @@ include pathOf('includes/navbar.php');
                                                         <button class="product-btn" onclick="addToCart(<?= $products['Id'] ?>)">Add To Cart</button>
                                                     </div>
                                                     <div class="btn-wishlist" data-title="Wishlist">
-                                                        <button class="product-btn">Add to wishlist</button>
+                                                        <button class="product-btn" onclick="addToWishlist(<?= $products['Id'] ?>)">Add to wishlist</button>
                                                     </div>
                                                 </div>
                                                 <div class="product-meta">
@@ -111,6 +111,35 @@ include pathOf('includes/navbar.php');
                 success: function(response) {
                     console.log(response.success);
                     alert("Product added to cart");
+                    location.reload();
+                }
+            });
+        }
+
+        function addToWishlist(ProductId) {
+            // Properly embed the PHP value into JavaScript as a boolean
+            var isLoggedIn = <?= isset($_SESSION['UserId']) ? 'true' : 'false' ?>;
+            var UserId = <?= isset($_SESSION['UserId']) ? $_SESSION['UserId'] : 'null' ?>;
+            console.log(ProductId);
+            console.log(UserId);
+
+            // Check if the user is not logged in
+            if (!isLoggedIn) {
+                alert("Please log in to add products to the wishlist.");
+                window.location.href = "./login.php";
+                return;
+            }
+
+            $.ajax({
+                url: '../admin/api/wishlists/insert.php',
+                type: 'POST',
+                data: {
+                    ProductId: ProductId,
+                    UserId: UserId
+                },
+                success: function(response) {
+                    console.log(response.success);
+                    alert("Product added to Wishlist");
                     location.reload();
                 }
             });
