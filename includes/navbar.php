@@ -121,11 +121,11 @@ if (isset($_SESSION['UserId'])) {
 									<div class="col-xl-3 col-lg-4 col-md-12 col-sm-12 col-12 header-right">
 										<div class="header-page-link">
 											<div class="wishlist-box">
-												<?php if (isset($_SESSION['UserId'])) { ?>
-													<a href="<?= urlOf('admin/api/logout/logout.php') ?>"><i class="fa-regular fa-user"></i></a>
-												<?php } ?>
 												<?php if (!isset($_SESSION['UserId'])) { ?>
-													<a href="<?= urlOf('pages/register.php') ?>"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+													<a href="<?= urlOf('pages/register.php') ?>"><i class="fa-regular fa-user"></i></a>
+												<?php } ?>
+												<?php if (isset($_SESSION['UserId'])) { ?>
+													<a href="<?= urlOf('admin/api/logout/logout.php') ?>"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
 												<?php } ?>
 											</div>
 											<!-- Wishlist -->

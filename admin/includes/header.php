@@ -1,3 +1,12 @@
+<?php
+
+$url = urlOf('pages/login/login.php');
+if (!isset($_SESSION['LoggedIn'])) {
+    header("Location: $url");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     
