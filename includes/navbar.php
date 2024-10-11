@@ -120,10 +120,17 @@ if (isset($_SESSION['UserId'])) {
 
 									<div class="col-xl-3 col-lg-4 col-md-12 col-sm-12 col-12 header-right">
 										<div class="header-page-link">
+											<div class="wishlist-box">
+												<?php if (isset($_SESSION['UserId'])) { ?>
+													<a href="<?= urlOf('admin/api/logout/logout.php') ?>"><i class="fa-regular fa-user"></i></a>
+												<?php } ?>
+												<?php if (!isset($_SESSION['UserId'])) { ?>
+													<a href="<?= urlOf('pages/register.php') ?>"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+												<?php } ?>
+											</div>
 											<!-- Wishlist -->
 											<div class="wishlist-box">
 												<a href="<?= urlOf('pages/wishlist.php') ?>"><i class="icon-heart"></i></a>
-												<span class="count-wishlist">1</span>
 											</div>
 											
 											<!-- Cart -->
@@ -131,7 +138,7 @@ if (isset($_SESSION['UserId'])) {
 												<div class="dropdown mini-cart top-cart">
 													<div class="remove-cart-shadow"></div>
 													<a class="dropdown-toggle cart-icon" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-														<div class="icons-cart"><i class="icon-large-paper-bag"></i><span class="cart-count">2</span></div>
+														<div class="icons-cart"><i class="icon-large-paper-bag"></i></div>
 													</a>
 													<div class="dropdown-menu cart-popup">
 														<div class="cart-empty-wrap">
