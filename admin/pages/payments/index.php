@@ -2,7 +2,7 @@
 require '../../includes/init.php';
 
 $index = 0;
-$payments = select("SELECT Payments.Id, Payments.Cash, Orders.Id AS 'OrderId' FROM Payments INNER JOIN Orders ON Payments.OrderId = Orders.Id");
+$payments = select("SELECT Payments.Id, Orders.*, Orders.Id AS 'OrderId' FROM Payments INNER JOIN Orders ON Payments.OrderId = Orders.Id");
 
 include pathOf('includes/header.php');
 include pathOf('includes/sidebar.php');
@@ -23,7 +23,7 @@ include pathOf('includes/navbar.php');
                                         <tr>
                                             <th>Sr No.</th>
                                             <th>Order</th>
-                                            <th>Cash</th>
+                                            <th>Total Amount</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -31,7 +31,7 @@ include pathOf('includes/navbar.php');
                                             <tr>
                                                 <td><?= $index += 1 ?></td>
                                                 <td><?= $payment['OrderId'] ?></td>
-                                                <td><?= $payment['Cash'] ?></td>
+                                                <td><?= $payment['TotalPrice'] ?></td>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>
@@ -39,7 +39,7 @@ include pathOf('includes/navbar.php');
                                         <tr>
                                             <th>Sr No.</th>
                                             <th>Order</th>
-                                            <th>Cash</th>
+                                            <th>Total Amount</th>
                                         </tr>
                                     </tfoot>
                                 </table>

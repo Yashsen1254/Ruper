@@ -78,7 +78,6 @@ CREATE TABLE `Orders` (
 CREATE TABLE `Payments` (
     `Id` INT PRIMARY KEY AUTO_INCREMENT,
     `OrderId` INT NOT NULL,
-    `Cash` INT(11) NOT NULL,
     FOREIGN KEY (`OrderId`) REFERENCES `Orders` (`Id`)
 );
 

@@ -12,10 +12,10 @@ execute($query, $param);
 
 echo json_encode(["status" => "success", "message" => "Order Updated Successfully"]);
 
-// $paymentquery = "INSERT INTO Payments (OrderId) VALUES (?)";
-// $paymentparam = [$Id];
+$paymentquery = "INSERT INTO Payments (OrderId) VALUES (?)";
+$paymentparam = [$Id];
 
-// execute($paymentquery, $paymentparam);
-// echo json_encode(["status" => "success", "message" => "Payment Added Successfully"]);
+execute($paymentquery, $paymentparam);
+echo json_encode(["status" => "success", "message" => "Payment Added Successfully"]);
 
 ?>
