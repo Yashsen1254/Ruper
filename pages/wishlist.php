@@ -42,6 +42,7 @@ include pathOf('includes/navbar.php');
                                                         <img width="600" height="600" src="<?= urlOf('admin/assets/images/uploads/') . $wishlist['ImageFileName'] ?>" alt="">
                                                     </a>
                                                 </td>
+                                                <input type="hidden" value="1" id="Quantity">
                                                 <td class="wishlist-item-info">
                                                     <div class="wishlist-item-name">
                                                         <a href="shop-details.html"><?= $wishlist['Name'] ?></a>
@@ -51,7 +52,7 @@ include pathOf('includes/navbar.php');
                                                     </div>
                                                 </td>
                                                 <td>
-													<button type="submit" class="product-btn" onclick="addToCart(<?= $wishlist['ProductId'] ?>)">Add to cart</button>
+													<button onclick="addToCart(<?= $wishlist['ProductId'] ?>)">Add to cart</button>
                                                 </td>
                                             </tr>
                                             <?php endforeach; ?>
@@ -64,34 +65,45 @@ include pathOf('includes/navbar.php');
                 </div><!-- #primary -->
             </div><!-- #main-content -->
         </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
         <script>
             function addToCart(ProductId) {
                 var isLoggedIn = <?= isset($_SESSION['UserId']) ? 'true' : 'false' ?>;
                 var UserId = <?= isset($_SESSION['UserId']) ? $_SESSION['UserId'] : 'null' ?>;
-                
+                console.log(ProductId);
+                console.log(UserId);
+                var Quantity = $("#Quantity").val();
                 if (!isLoggedIn) {
                     alert('Please log in to add items to the cart');
                     return;
                 }
 
-                console.log('ProductId:', ProductId);
-                console.log('UserId:', UserId);
+                $.ajax({
+                    url: '../admin/api/carts/insert.php',
+                    type: 'POST',
+                    data: {
+                        ProductId: ProductId,
+                        UserId: UserId,
+                        Quantity: Quantity
+                    },
+                    success: function(response) {
+                        console.log(response.success);
+                        alert("Product added to cart");
+                        location.reload();
+                    }
+                });
 
-                // Uncomment this block when backend API is ready to handle adding to cart
-                // $.ajax({
-                //     url: '../admin/api/carts/insert.php',
-                //     type: 'POST',
-                //     data: {
-                //         ProductId: ProductId,
-                //         UserId: UserId
-                //     },
-                //     success: function(response) {
-                //         console.log(response.success);
-                //         alert("Product added to cart");
-                //         location.reload();
-                //     }
-                // });
+                $.ajax({
+                    url: '../admin/api/wishlists/delete.php',
+                    type: 'POST',
+                    data: {
+                        Id: ProductId
+                    },
+                    success: function(response) {
+                        location.reload();
+                    }
+                })
             }
 
 			function deleteWishlistItem(Id) {
