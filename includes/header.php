@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Home Categories | Ruper</title>
 	<link rel="shortcut icon" type="image/x-icon" href="media/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="<?= urlOf('assets/libs/bootstrap/css/bootstrap.min.css') ?>" type="text/css">
 	<link rel="stylesheet" href="<?= urlOf('assets/libs/feather-font/css/iconfont.css') ?>" type="text/css">
 	<link rel="stylesheet" href="<?= urlOf('assets/libs/icomoon-font/css/icomoon.css') ?>" type="text/css">

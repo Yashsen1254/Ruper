@@ -2,7 +2,9 @@
 require '../../includes/init.php';
 
 $index = 0;
-$payments = select("SELECT Payments.Id, Orders.*, Orders.Id AS 'OrderId' FROM Payments INNER JOIN Orders ON Payments.OrderId = Orders.Id");
+// $payments = select("SELECT Payments.Id, Orders.*, Orders.Id AS 'OrderId' FROM Payments INNER JOIN Orders ON Payments.OrderId = Orders.Id");
+$payments = select("SELECT Payments.Id, Orders.Id AS 'OrderId', Orders.TotalPrice, Checkouts.FirstName, Checkouts.Phone, Checkouts.StreetAddress FROM Payments INNER JOIN Orders ON Payments.OrderId = Orders.Id INNER JOIN Checkouts ON Orders.CartId = Checkouts.CartId");
+
 
 include pathOf('includes/header.php');
 include pathOf('includes/sidebar.php');
@@ -22,7 +24,9 @@ include pathOf('includes/navbar.php');
                                     <thead>
                                         <tr>
                                             <th>Sr No.</th>
-                                            <th>Order</th>
+                                            <th>Name</th>
+                                            <th>Number</th>
+                                            <th>Address</th>
                                             <th>Total Amount</th>
                                         </tr>
                                     </thead>
@@ -30,7 +34,9 @@ include pathOf('includes/navbar.php');
                                         <?php foreach ($payments as $payment): ?>
                                             <tr>
                                                 <td><?= $index += 1 ?></td>
-                                                <td><?= $payment['OrderId'] ?></td>
+                                                <td><?= $payment['FirstName'] ?></td>
+                                                <td><?= $payment['Phone'] ?></td>
+                                                <td><?= $payment['StreetAddress'] ?></td>
                                                 <td><?= $payment['TotalPrice'] ?></td>
                                             </tr>
                                         <?php endforeach; ?>
@@ -38,7 +44,9 @@ include pathOf('includes/navbar.php');
                                     <tfoot>
                                         <tr>
                                             <th>Sr No.</th>
-                                            <th>Order</th>
+                                            <th>Name</th>
+                                            <th>Number</th>
+                                            <th>Address</th>
                                             <th>Total Amount</th>
                                         </tr>
                                     </tfoot>

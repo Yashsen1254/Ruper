@@ -15,9 +15,7 @@ include pathOf('includes/navbar.php');
                     <div id="title" class="page-title">
                         <div class="section-container">
                             <div class="content-title-heading">
-                                <h1 class="text-title-heading">
-                                    Home Products
-                                </h1>
+                                <h1 class="text-title-heading">Home Products</h1>
                             </div>
                             <div class="breadcrumbs">
                                 <a href="<?= urlOf('index.php') ?>">Home</a><span class="delimiter"></span><a href="<?= urlOf('pages/shop.php') ?>">Shop</a>
@@ -31,9 +29,7 @@ include pathOf('includes/navbar.php');
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-12">
                                         <div class="products-topbar clearfix">
                                             <div class="products-topbar-left">
-                                                <div class="products-count">
-                                                    Showing all 21 results
-                                                </div>
+                                                <div class="products-count">Showing all 21 results</div>
                                             </div>
                                         </div>
                                         <div class="tab-content">
@@ -84,14 +80,29 @@ include pathOf('includes/navbar.php');
             </div><!-- #main-content -->
         </div>
     </div>
-    <script>
 
+    <!-- Bootstrap Modal -->
+    <div class="modal fade" id="wishlistModal" tabindex="-1" aria-labelledby="wishlistModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="wishlistModalLabel">Success</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Product added to Wishlist!
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
         function addToWishlist(ProductId) {
-            // Properly embed the PHP value into JavaScript as a boolean
             var isLoggedIn = <?= isset($_SESSION['UserId']) ? 'true' : 'false' ?>;
             var UserId = <?= isset($_SESSION['UserId']) ? $_SESSION['UserId'] : 'null' ?>;
-            console.log(ProductId);
-            console.log(UserId);
 
             // Check if the user is not logged in
             if (!isLoggedIn) {
@@ -109,14 +120,15 @@ include pathOf('includes/navbar.php');
                 },
                 success: function(response) {
                     console.log(response.success);
-                    alert("Product added to Wishlist");
-                    location.reload();
+                    $('#wishlistModal').modal('show');
                 }
             });
         }
     </script>
+
     <?php
     include pathOf('includes/footer.php');
     include pathOf('includes/scripts.php');
     include pathOf('includes/pageend.php');
     ?>
+</body>

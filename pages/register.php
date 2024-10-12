@@ -27,25 +27,25 @@ include pathOf('includes/navbar.php');
                                 <div class="col-lg-6 col-md-8 col-sm-10">
                                     <div class="card shadow p-4">
                                         <h2 class="text-center mb-4">Register</h2>
-                                            <div class="form-group">
-                                                <label for="username">Name<span class="required">*</span></label>
-                                                <input type="text" class="form-control" name="Name" id="Name" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="username">Email<span class="required">*</span></label>
-                                                <input type="email" class="form-control" name="Email" id="Email" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="username">Username<span class="required">*</span></label>
-                                                <input type="text" class="form-control" name="UserName" id="UserName" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="password">Password <span class="required">*</span></label>
-                                                <input type="password" class="form-control" name="Password" id="Password" required>
-                                            </div>
-                                            <div class="text-center">
-                                                <button type="submit" class="btn btn-primary w-100" onclick="insertData()">Register</button>
-                                            </div>
+                                        <div class="form-group">
+                                            <label for="username">Name<span class="required">*</span></label>
+                                            <input type="text" class="form-control" name="Name" id="Name" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="username">Email<span class="required">*</span></label>
+                                            <input type="email" class="form-control" name="Email" id="Email" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="username">Username<span class="required">*</span></label>
+                                            <input type="text" class="form-control" name="UserName" id="UserName" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="password">Password <span class="required">*</span></label>
+                                            <input type="password" class="form-control" name="Password" id="Password" required>
+                                        </div>
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-primary w-100" onclick="insertData()">Register</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -54,6 +54,29 @@ include pathOf('includes/navbar.php');
                 </div><!-- #primary -->
             </div><!-- #main-content -->
         </div>
+
+        <div class="modal fade" id="addtocartmodal" tabindex="-1" aria-labelledby="addtocartModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addtocartModalLabel">Success</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Product added to Cart!
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <?php
+        include pathOf('includes/footer.php');
+        include pathOf('includes/scripts.php');
+
+        ?>
         <script>
             function insertData() {
                 var Name = $('#Name').val();
@@ -71,14 +94,12 @@ include pathOf('includes/navbar.php');
                         Password: Password
                     },
                     success: function(response) {
-                        alert("Client Added");
+                        alert("Registered");
                         window.location.herf = './login.php';
                     }
                 });
             }
         </script>
-<?php
-    include pathOf('includes/footer.php');
-    include pathOf('includes/scripts.php');
-    include pathOf('includes/pageend.php');
-?>
+        <?php
+        include pathOf('includes/pageend.php');
+        ?>

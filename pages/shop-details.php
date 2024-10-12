@@ -16,8 +16,7 @@ include pathOf('includes/navbar.php');
                     <div id="title" class="page-title">
                         <div class="section-container">
                             <div class="content-title-heading">
-                                <h1 class="text-title-heading">
-                                </h1>
+                                <h1 class="text-title-heading"></h1>
                             </div>
                             <div class="breadcrumbs">
                                 <a href="index-2.html">Home</a><span class="delimiter"></span><a href="shop-grid-left.html">Shop</a>
@@ -44,7 +43,7 @@ include pathOf('includes/navbar.php');
                                                 </div>
                                             </div>
 
-                                            <div class="product-info col-lg-5 col-md-12 col-12 ">
+                                            <div class="product-info col-lg-5 col-md-12 col-12">
                                                 <h1 class="title"><?= $products['Name'] ?></h1>
                                                 <span class="price">
                                                     <span>₹<?= $products['Price'] ?></span>
@@ -80,73 +79,109 @@ include pathOf('includes/navbar.php');
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div><!-- #content -->
-                </div><!-- #primary -->
-            </div><!-- #main-content -->
+                        </div><!-- #content -->
+                    </div><!-- #primary -->
+                </div><!-- #main-content -->
+            </div>
         </div>
-        <script>
-            function addToCart(ProductId) {
-                
-            var isLoggedIn = <?= isset($_SESSION['UserId']) ? 'true' : 'false' ?>;
-            var UserId = <?= isset($_SESSION['UserId']) ? $_SESSION['UserId'] : 'null' ?>;
-            console.log(ProductId);
-            console.log(UserId);
-            var Quantity = $("#Quantity").val();
 
-            if (!isLoggedIn) {
-                alert("Please log in to add products to the cart.");
-                window.location.href = "./login.php";
-                return;
-            }
+        <!-- Wishlist Modal -->
+        <div class="modal fade" id="wishlistModal" tabindex="-1" aria-labelledby="wishlistModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="wishlistModalLabel">Success</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Product added to Wishlist!
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-            $.ajax({
-                url: '../admin/api/carts/insert.php',
-                type: 'POST',
-                data: {
-                    ProductId: ProductId,
-                    UserId: UserId,
-                    Quantity: Quantity
-                },
-                success: function(response) {
-                    console.log(response.success);
-                    alert("Product added to cart");
-                    location.reload();
-                }
-            });
-        }
+        <!-- Add to Cart Modal -->
+        <div class="modal fade" id="addtocartmodal" tabindex="-1" aria-labelledby="addtocartModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addtocartModalLabel">Success</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Product added to Cart!
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        function addToWishlist(ProductId) {
-            // Properly embed the PHP value into JavaScript as a boolean
-            var isLoggedIn = <?= isset($_SESSION['UserId']) ? 'true' : 'false' ?>;
-            var UserId = <?= isset($_SESSION['UserId']) ? $_SESSION['UserId'] : 'null' ?>;
-            console.log(ProductId);
-            console.log(UserId);
-
-            // Check if the user is not logged in
-            if (!isLoggedIn) {
-                alert("Please log in to add products to the wishlist.");
-                window.location.href = "./login.php";
-                return;
-            }
-
-            $.ajax({
-                url: '../admin/api/wishlists/insert.php',
-                type: 'POST',
-                data: {
-                    ProductId: ProductId,
-                    UserId: UserId
-                },
-                success: function(response) {
-                    console.log(response.success);
-                    alert("Product added to Wishlist");
-                    location.reload();
-                }
-            });
-        }
-        </script>
         <?php
         include pathOf('includes/footer.php');
         include pathOf('includes/scripts.php');
+        ?>
+
+        <script>
+            function addToCart(ProductId) {
+                var isLoggedIn = <?= isset($_SESSION['UserId']) ? 'true' : 'false' ?>;
+                var UserId = <?= isset($_SESSION['UserId']) ? $_SESSION['UserId'] : 'null' ?>;
+                console.log(ProductId);
+                console.log(UserId);
+                var Quantity = $("#Quantity").val();
+
+                if (!isLoggedIn) {
+                    alert("Please log in to add products to the cart.");
+                    window.location.href = "./login.php";
+                    return;
+                }
+
+                $.ajax({
+                    url: '../admin/api/carts/insert.php',
+                    type: 'POST',
+                    data: {
+                        ProductId: ProductId,
+                        UserId: UserId,
+                        Quantity: Quantity
+                    },
+                    success: function(response) {
+                        console.log(response.success);
+                        $('#addtocartmodal').modal('show'); // Corrected selector
+                    }
+                });
+            }
+
+            function addToWishlist(ProductId) {
+                var isLoggedIn = <?= isset($_SESSION['UserId']) ? 'true' : 'false' ?>;
+                var UserId = <?= isset($_SESSION['UserId']) ? $_SESSION['UserId'] : 'null' ?>;
+                console.log(ProductId);
+                console.log(UserId);
+
+                if (!isLoggedIn) {
+                    alert("Please log in to add products to the wishlist.");
+                    window.location.href = "./login.php";
+                    return;
+                }
+
+                $.ajax({
+                    url: '../admin/api/wishlists/insert.php',
+                    type: 'POST',
+                    data: {
+                        ProductId: ProductId,
+                        UserId: UserId
+                    },
+                    success: function(response) {
+                        console.log(response.success);
+                        $('#wishlistModal').modal('show');
+                    }
+                });
+            }
+        </script>
+        
+        <?php
         include pathOf('includes/pageend.php');
         ?>

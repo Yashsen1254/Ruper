@@ -1,3 +1,4 @@
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="<?= urlOf('assets/libs/popper/js/popper.min.js') ?>"></script>
 <script src="<?= urlOf('assets/libs/jquery/js/jquery.min.js') ?>"></script>
 <script src="<?= urlOf('assets/libs/bootstrap/js/bootstrap.min.js') ?>"></script>
