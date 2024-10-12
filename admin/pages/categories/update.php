@@ -33,6 +33,30 @@ include pathOf('includes/sidebar.php');
         </div>
     </div>
     </div>
+    <div class="modal" tabindex="-1" id="success">
+        <div class="modal-dialog">
+            <div class="modal-content bg-dark">
+                <div class="modal-header text-white">
+                    <h5 class="modal-title">Category Updated</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-success">Success</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" tabindex="-1" id="error">
+        <div class="modal-dialog">
+            <div class="modal-content bg-dark">
+                <div class="modal-header text-white">
+                    <h5 class="modal-title">Category Not Updated</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger">Error</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <?php
     include pathOf('includes/scripts.php');
     ?>
@@ -40,6 +64,14 @@ include pathOf('includes/sidebar.php');
         function insertData() {
             var Id = $('#Id').val();
             var Name = $('#Name').val();
+
+            if (!Name.trim()) {
+                $('#error').modal('show');
+                setTimeout(function() {
+                    $('#error').modal('hide');
+                }, 2000);
+                return;
+            }
 
             $.ajax({
                 url: '../../api/categories/update.php',
@@ -49,9 +81,8 @@ include pathOf('includes/sidebar.php');
                     Name: Name
                 },
                 success: function(response) {
-                    console.log(response.success);
-                    alert("Categorie Added");
-                    window.location.href = './index.php';
+                    $("#success").modal('show');
+                    window.location.href = 'index.php';
                 }
             });
         }

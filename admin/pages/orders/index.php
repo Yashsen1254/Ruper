@@ -62,6 +62,30 @@ include pathOf('includes/navbar.php');
                 </div>
             </div>
         </div>
+        <div class="modal" tabindex="-1" id="success">
+            <div class="modal-dialog">
+                <div class="modal-content bg-dark">
+                    <div class="modal-header text-white">
+                        <h5 class="modal-title">Order Success</h5>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-success">Success</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal" tabindex="-1" id="error">
+            <div class="modal-dialog">
+                <div class="modal-content bg-dark">
+                    <div class="modal-header text-white">
+                        <h5 class="modal-title">Error</h5>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger">Error</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <?php
         include pathOf('includes/scripts.php');
         ?>
@@ -74,7 +98,11 @@ include pathOf('includes/navbar.php');
                         Id: Id,
                     },
                     success: function(response) {
-                        alert("Order updated successfully");
+                        $("#success").modal("show");
+                        location.reload();
+                    },
+                    error: function(response) {
+                        $("#error").modal("show");
                         location.reload();
                     }
                 });

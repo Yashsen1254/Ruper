@@ -59,26 +59,53 @@ include pathOf('includes/sidebar.php');
                 </div>
             </div>
         </div>
+        <div class="modal" tabindex="-1" id="success">
+            <div class="modal-dialog">
+                <div class="modal-content bg-dark">
+                    <div class="modal-header text-white">
+                        <h5 class="modal-title">Category Deleted</h5>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-success">Success</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal" tabindex="-1" id="error">
+            <div class="modal-dialog">
+                <div class="modal-content bg-dark">
+                    <div class="modal-header text-white">
+                        <h5 class="modal-title">Category Not Deleted</h5>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger">Error</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<?php
-    include pathOf('includes/scripts.php');
-?>
-<script>
-    function deleteData(Id) {
-        if (confirm("sure you want to delete this categorie"));
-        $.ajax({
-            url: "../../api/categories/delete.php",
-            method: "POST",
-            data: {
-                Id: Id
-            },
-            success: function (response) {
-                alert('Category Deleted');
-                location.reload();
+        <?php
+        include pathOf('includes/scripts.php');
+        ?>
+        <script>
+            function deleteData(Id) {
+                $.ajax({
+                    url: "../../api/categories/delete.php",
+                    method: "POST",
+                    data: {
+                        Id: Id
+                    },
+                    success: function(response) {
+                        $("#success").modal("show");
+                        location.reload();
+                    },
+                    error: function(response) {
+                        $("#error").modal("show");
+                        location.reload();
+                    }
+                })
             }
-        })
-    }
-</script>
-<?php
-    include pathOf('includes/pageend.php');
-?>
+        </script>
+        <?php
+        include pathOf('includes/pageend.php');
+        ?>

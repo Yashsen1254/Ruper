@@ -40,6 +40,30 @@ include pathOf('includes/sidebar.php');
         </div>
     </div>
     </div>
+    <div class="modal" tabindex="-1" id="success">
+        <div class="modal-dialog">
+            <div class="modal-content bg-dark">
+                <div class="modal-header text-white">
+                    <h5 class="modal-title">Admin Inserted</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" tabindex="-1" id="error">
+        <div class="modal-dialog">
+            <div class="modal-content bg-dark">
+                <div class="modal-header text-white">
+                    <h5 class="modal-title">Admin Not Inserted</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <?php
     include pathOf('includes/scripts.php');
     ?>
@@ -50,6 +74,13 @@ include pathOf('includes/sidebar.php');
             var UserName = $('#UserName').val();
             var Password = $('#Password').val();
 
+            if (!Name.trim() || !Email.trim() || !UserName.trim() || !Password.trim()) {
+                $('#error').modal('show');
+                setTimeout(function() {
+                    $('#error').modal('hide');
+                }, 2000);
+                return;
+            }
             $.ajax({
                 url: '../../api/admins/insert.php',
                 type: 'POST',
@@ -60,9 +91,8 @@ include pathOf('includes/sidebar.php');
                     Password: Password
                 },
                 success: function(response) {
-                    console.log(response.success);
-                    alert("Admin Added");
-                    window.location.href = './index.php';
+                    $("#success").modal('show');
+                    window.location.href = 'index.php';
                 }
             });
         }
