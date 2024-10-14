@@ -51,6 +51,30 @@ include pathOf('includes/sidebar.php');
         </div>
     </div>
     </div>
+    <div class="modal" tabindex="-1" id="success">
+        <div class="modal-dialog">
+            <div class="modal-content bg-dark">
+                <div class="modal-header text-white">
+                    <h5 class="modal-title">Product Deleted</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-success">Success</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" tabindex="-1" id="error">
+        <div class="modal-dialog">
+            <div class="modal-content bg-dark">
+                <div class="modal-header text-white">
+                    <h5 class="modal-title">Product Not Deleted</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <?php
     include pathOf('includes/scripts.php');
     ?>
@@ -70,8 +94,11 @@ include pathOf('includes/sidebar.php');
                 processData: false,
                 contentType: false,
                 success: function(response) {
-                    alert("Product Added");
-                    window.location.href = './index.php';
+                    $("#success").modal('show');
+                    window.location.href = 'index.php';
+                },
+                else: function(response) {
+                    $("#error").modal('show');
                 }
             })
         }

@@ -40,7 +40,7 @@ include pathOf('includes/navbar.php');
                                                 <td><?= $order['TotalPrice'] ?></td>
                                                 <td><?= $order['Status'] ?></td>
                                                 <input type="hidden" value="<?= $order['Id'] ?>" id="orderId">
-                                                <td><button class="btn btn-outline-success" onclick="insertData(<?= $order['Id'] ?>)">Success</button></td>
+                                                <td><button class="btn btn-outline-success" onclick="insertData(<?= $order['Id'] ?>)">Delevered</button></td>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>
@@ -98,11 +98,11 @@ include pathOf('includes/navbar.php');
                         Id: Id,
                     },
                     success: function(response) {
-                        $("#success").modal("show");
+                        $("#error").modal("show");
                         location.reload();
                     },
                     error: function(response) {
-                        $("#error").modal("show");
+                        $("#success").modal("show");
                         location.reload();
                     }
                 });

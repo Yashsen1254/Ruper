@@ -5,7 +5,7 @@ header('Content-Type: application/json');
 
 $Id = $_POST['Id'];
 
-$query = "UPDATE orders SET Status = 'Success' WHERE Id = ?";
+$query = "UPDATE orders SET Status = 'Delevered' WHERE Id = ?";
 $param = [$Id];
 
 execute($query, $param);
