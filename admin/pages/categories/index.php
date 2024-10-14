@@ -1,7 +1,7 @@
 <?php
 require '../../includes/init.php';
 $index = 0;
-$categories = select("SELECT * FROM categories");
+$categories = select("SELECT * FROM categories WHERE IsDeleted = 1");
 
 include pathOf('includes/header.php');
 include pathOf('includes/navbar.php');

@@ -4,7 +4,7 @@
 
     $Id = $_POST['Id'];
 
-    $query = "DELETE FROM categories WHERE Id = ?";
+    $query = "UPDATE categories SET IsDeleted = -1 WHERE Id = ?";
     $param = [$Id];
 
     $result = execute($query, $param);
@@ -12,6 +12,6 @@
     if($result) {
         echo json_encode(["status" => "success", "message" => "Category Deleted Successfully"]);
     } else {
-        echo json_encode(["status" => "error", "message" => "Something Went Wrong"]);
+        echo json_encode(["status" => "error", "message" => "Something Went Wrong"]); 
     }
 ?>
