@@ -22,7 +22,8 @@ CREATE TABLE `Clients` (
 
 CREATE TABLE `Categories` (
     `Id` INT PRIMARY KEY AUTO_INCREMENT,
-    `Name` VARCHAR(255) NOT NULL
+    `Name` VARCHAR(255) NOT NULL,
+    `IsDeleted` VARCHAR(255) DEFAULT 1
 );
 
 CREATE TABLE `Products` (
@@ -32,6 +33,7 @@ CREATE TABLE `Products` (
     `Description` VARCHAR(255) NOT NULL,
     `Price` INT(11) NOT NULL,
     `ImageFileName` VARCHAR(255) NOT NULL,
+    `IsDeleted` VARCHAR(255) DEFAULT 1,
     FOREIGN KEY (`CategoryId`) REFERENCES `Categories` (`Id`)
 );
 
@@ -39,6 +41,7 @@ CREATE TABLE `Wishlists` (
     `Id` INT PRIMARY KEY AUTO_INCREMENT,
     `ProductId` INT NOT NULL,
     `ClientId` INT NOT NULL,
+    `IsDeleted` VARCHAR(255) DEFAULT 1,
     FOREIGN KEY (`ProductId`) REFERENCES `Products` (`Id`),
     FOREIGN KEY (`ClientId`) REFERENCES `Clients` (`Id`)
 );
@@ -48,7 +51,7 @@ CREATE TABLE `Carts` (
     `ProductId` INT NOT NULL,
     `Quantity` INT(11) DEFAULT 1,
     `ClientId` INT NOT NULL,
-    `DeletedAt` DATETIME DEFAULT NULL,
+    `IsDeleted` VARCHAR(255) DEFAULT 1,
     FOREIGN KEY (`ProductId`) REFERENCES `Products` (`Id`),
     FOREIGN KEY (`ClientId`) REFERENCES `Clients` (`Id`)
 );
