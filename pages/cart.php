@@ -2,7 +2,7 @@
 require '../includes/init.php';
 
 $ClientId = $_SESSION['UserId'];
-$carts = select("SELECT carts.*, products.Name, products.Price, products.ImageFileName FROM carts JOIN products ON carts.ProductId = products.Id WHERE carts.ClientId = $ClientId");
+$carts = select("SELECT carts.*, products.Name, products.Price, products.ImageFileName FROM carts JOIN products ON carts.ProductId = products.Id WHERE carts.ClientId = $ClientId AND carts.DeletedAt IS NULL");
 
 include pathOf('includes/header.php');
 include pathOf('includes/navbar.php');
