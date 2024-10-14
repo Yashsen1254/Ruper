@@ -48,6 +48,7 @@ CREATE TABLE `Carts` (
     `ProductId` INT NOT NULL,
     `Quantity` INT(11) DEFAULT 1,
     `ClientId` INT NOT NULL,
+    `DeletedAt` DATETIME DEFAULT NULL,
     FOREIGN KEY (`ProductId`) REFERENCES `Products` (`Id`),
     FOREIGN KEY (`ClientId`) REFERENCES `Clients` (`Id`)
 );
