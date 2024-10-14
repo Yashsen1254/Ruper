@@ -73,6 +73,7 @@ CREATE TABLE `Orders` (
     `TotalQuantity` INT(11) NOT NULL,
     `TotalPrice` INT(11) NOT NULL,
     `Status` VARCHAR(255) NOT NULL,
+    `Date` DATETIME NOT NULL,
     FOREIGN KEY (`CartId`) REFERENCES `Carts` (`Id`)
 );
 
