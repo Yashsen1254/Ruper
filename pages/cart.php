@@ -1,8 +1,10 @@
 <?php
 require '../includes/init.php';
 
-$ClientId = $_SESSION['UserId'];
-$carts = select("SELECT carts.*, products.Name, products.Price, products.ImageFileName FROM carts JOIN products ON carts.ProductId = products.Id WHERE carts.ClientId = $ClientId AND carts.DeletedAt IS NULL");
+if(isset($_SESSION['UserId'])) {
+	$ClientId = $_SESSION['UserId'];
+	$carts = select("SELECT carts.*, products.Name, products.Price, products.ImageFileName FROM carts JOIN products ON carts.ProductId = products.Id WHERE carts.ClientId = $ClientId AND carts.IsDeleted = 1");
+}
 
 include pathOf('includes/header.php');
 include pathOf('includes/navbar.php');
@@ -45,7 +47,9 @@ include pathOf('includes/navbar.php');
 															</tr>
 														</thead>
 														<tbody>
-															<?php foreach ($carts as $cart): ?>
+															<?php
+															if(isset($_SESSION['UserId'])) {
+															foreach ($carts as $cart): ?>
 																<tr class="cart-item">
 																	<td class="product-thumbnail">
 																		<a href="shop-details.html">
@@ -70,7 +74,7 @@ include pathOf('includes/navbar.php');
 																		<button onclick="deleteCartItem(<?= $cart['Id'] ?>)">X</button>
 																	</td>
 																</tr>
-															<?php endforeach; ?>
+															<?php endforeach;} ?>
 															<tr>
 																<td colspan="6" class="actions">
 																	<div class="bottom-cart">
@@ -89,9 +93,10 @@ include pathOf('includes/navbar.php');
 												<div>
 													<div class="order-total">
 														<div class="title">Total</div>
-														<div><span>₹<?= array_sum(array_map(function ($cart) {
+														<div><span>₹<?php if(isset($_SESSION['UserId'])) { 
+														echo array_sum(array_map(function ($cart) {
 																		return $cart['Price'] * $cart['Quantity'];
-																	}, $carts)); ?></span></div>
+																	}, $carts));} ?></span></div>
 													</div>
 												</div>
 												<div class="proceed-to-checkout">

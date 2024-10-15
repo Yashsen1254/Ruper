@@ -1,9 +1,9 @@
 <?php
 require '../includes/init.php';
-
+if(isset($_SESSION['UserId'])) {
 $ClientId = $_SESSION['UserId'];
 $wishlists = select("SELECT wishlists.*, products.Name, products.Price, products.ImageFileName, products.Id AS 'ProductId' FROM wishlists JOIN products ON wishlists.ProductId = products.Id WHERE wishlists.ClientId = $ClientId");
-
+}
 include pathOf('includes/header.php');
 include pathOf('includes/navbar.php');
 ?>
@@ -32,7 +32,8 @@ include pathOf('includes/navbar.php');
                                 <div class="shop-wishlist">
                                     <table class="wishlist-items">
                                         <tbody>
-                                            <?php foreach ($wishlists as $wishlist): ?>
+                                            <?php if(isset($_SESSION['UserId'])) { 
+                                            foreach ($wishlists as $wishlist): ?>
                                             <tr class="wishlist-item">
                                                 <td class="wishlist-item-remove">
 												<button onclick="deleteWishlistItem(<?= $wishlist['Id'] ?>)">X</button>
@@ -55,7 +56,7 @@ include pathOf('includes/navbar.php');
 													<button onclick="addToCart(<?= $wishlist['ProductId'] ?>)">Add to cart</button>
                                                 </td>
                                             </tr>
-                                            <?php endforeach; ?>
+                                            <?php endforeach; }?>
                                         </tbody>
                                     </table>
                                 </div>
