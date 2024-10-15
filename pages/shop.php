@@ -1,7 +1,7 @@
 <?php
 require '../includes/init.php';
 
-$products = select('SELECT * FROM products');
+$products = select('SELECT * FROM products WHERE IsDeleted = 1');
 
 include pathOf('includes/header.php');
 include pathOf('includes/navbar.php');

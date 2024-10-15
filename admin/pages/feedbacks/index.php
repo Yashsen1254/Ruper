@@ -2,7 +2,7 @@
 require '../../includes/init.php';
 
 $index = 0;
-$feedbacks = select("SELECT * FROM feedbacks");
+$feedbacks = select("SELECT * FROM feedback");
 
 include pathOf('includes/header.php');
 include pathOf('includes/sidebar.php');
@@ -23,8 +23,8 @@ include pathOf('includes/navbar.php');
                                         <tr>
                                             <th>Sr No.</th>
                                             <th>Name</th>
-                                            <th>Rating</th>
-                                            <th>Comment</th>
+                                            <th>Email</th>
+                                            <th>Message</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -32,8 +32,8 @@ include pathOf('includes/navbar.php');
                                             <tr>
                                                 <td><?= $index += 1 ?></td>
                                                 <td><?= $feedback['Name'] ?></td>
-                                                <td><?= $feedback['Rating'] ?></td>
-                                                <td><?= $feedback['Comment'] ?></td>
+                                                <td><?= $feedback['Email'] ?></td>
+                                                <td><?= $feedback['Message'] ?></td>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>
@@ -41,8 +41,8 @@ include pathOf('includes/navbar.php');
                                         <tr>
                                             <th>Sr No.</th>
                                             <th>Name</th>
-                                            <th>Rating</th>
-                                            <th>Comment</th>
+                                            <th>Email</th>
+                                            <th>Message</th>
                                         </tr>
                                     </tfoot>
                                 </table>
