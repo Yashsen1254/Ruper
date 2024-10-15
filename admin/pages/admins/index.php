@@ -76,7 +76,6 @@ include pathOf('includes/sidebar.php');
                         <h5 class="modal-title">Admin Deleted</h5>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-success">Success</button>
                     </div>
                 </div>
             </div>
@@ -88,7 +87,6 @@ include pathOf('includes/sidebar.php');
                         <h5 class="modal-title">Admin Not Deleted</h5>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-danger">Error</button>
                     </div>
                 </div>
             </div>
@@ -105,12 +103,16 @@ include pathOf('includes/sidebar.php');
                         Id: Id
                     },
                     success: function(response) {
-                        $("#success").modal("show");
+                        $("#success").modal('show');
+                    setTimeout(function() {
                         location.reload();
+                    }, 2000);
                     },
                     error: function(response) {
-                        $("#error").modal("show");
+                        $("#success").modal('show');
+                    setTimeout(function() {
                         location.reload();
+                    }, 2000);
                     }
                 })
             }

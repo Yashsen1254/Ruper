@@ -47,7 +47,6 @@ include pathOf('includes/sidebar.php');
                     <h5 class="modal-title">Admin Inserted</h5>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -59,7 +58,6 @@ include pathOf('includes/sidebar.php');
                     <h5 class="modal-title">Admin Not Inserted</h5>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -92,7 +90,15 @@ include pathOf('includes/sidebar.php');
                 },
                 success: function(response) {
                     $("#success").modal('show');
-                    window.location.href = 'index.php';
+                    setTimeout(function() {
+                        window.location.href = 'index.php';
+                    }, 2000);
+                },
+                error : function(response) {
+                    $("#error").modal('show');
+                    setTimeout(function() {
+                        $('#error').modal('hide');
+                    }, 2000);
                 }
             });
         }

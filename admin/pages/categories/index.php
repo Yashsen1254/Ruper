@@ -96,12 +96,16 @@ include pathOf('includes/sidebar.php');
                         Id: Id
                     },
                     success: function(response) {
-                        $("#success").modal("show");
-                        location.reload();
+                        $("#success").modal('show');
+                        setTimeout(function() {
+                            location.reload();
+                        }, 2000);
                     },
                     error: function(response) {
-                        $("#error").modal("show");
-                        location.reload();
+                        $("#success").modal('show');
+                        setTimeout(function() {
+                            location.reload();
+                        }, 2000);
                     }
                 })
             }

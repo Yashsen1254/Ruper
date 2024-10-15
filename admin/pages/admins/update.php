@@ -51,7 +51,6 @@ include pathOf('includes/sidebar.php');
                     <h5 class="modal-title">Admin Updated</h5>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-success">Success</button>
                 </div>
             </div>
         </div>
@@ -63,7 +62,6 @@ include pathOf('includes/sidebar.php');
                     <h5 class="modal-title">Admin Not Updated</h5>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger">Error</button>
                 </div>
             </div>
         </div>
@@ -100,7 +98,15 @@ include pathOf('includes/sidebar.php');
                 },
                 success: function(response) {
                     $("#success").modal('show');
-                    window.location.href = 'index.php';
+                    setTimeout(function() {
+                        window.location.href = './index.php';
+                    }, 2000);
+                },
+                error : function(response) {
+                    $("#error").modal('show');
+                    setTimeout(function() {
+                        $('#error').modal('hide');
+                    }, 2000);
                 }
             });
         }

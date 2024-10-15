@@ -58,7 +58,6 @@ include pathOf('includes/sidebar.php');
                     <h5 class="modal-title">Product Deleted</h5>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-success">Success</button>
                 </div>
             </div>
         </div>
@@ -70,7 +69,6 @@ include pathOf('includes/sidebar.php');
                     <h5 class="modal-title">Product Not Deleted</h5>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger">Close</button>
                 </div>
             </div>
         </div>
@@ -95,10 +93,15 @@ include pathOf('includes/sidebar.php');
                 contentType: false,
                 success: function(response) {
                     $("#success").modal('show');
-                    window.location.href = 'index.php';
+                    setTimeout(function() {
+                        window.location.href = 'index.php';
+                    }, 2000);
                 },
-                else: function(response) {
+                error : function(response) {
                     $("#error").modal('show');
+                    setTimeout(function() {
+                        $('#error').modal('hide');
+                    }, 2000);
                 }
             })
         }

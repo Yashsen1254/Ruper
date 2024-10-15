@@ -70,23 +70,26 @@ include pathOf('includes/navbar.php');
   </div>
   <script>
     function deleteData(Id) {
-        $.ajax({
-          url: '../../api/products/delete.php',
-          type: 'POST',
-          data: {
-            Id: Id
-          },
-          success: function(response) {
-            if (response == response.success) {
-              $("#success").modal("show");
-              location.reload();
-            } else {
-              $("#error").modal("show");
-              location.reload();
-            }
-          }
-        });
-      }
+      $.ajax({
+        url: '../../api/products/delete.php',
+        type: 'POST',
+        data: {
+          Id: Id
+        },
+        success: function(response) {
+          $("#success").modal('show');
+          setTimeout(function() {
+            location.reload();
+          }, 2000);
+        },
+        error: function(response) {
+          $("#success").modal('show');
+          setTimeout(function() {
+            location.reload();
+          }, 2000);
+        }
+      });
+    }
   </script>
   <?php
   include pathOf('includes/scripts.php');
