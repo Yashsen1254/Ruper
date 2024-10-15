@@ -21,6 +21,7 @@ $totalMonthlySales = selectOne("SELECT SUM(TotalPrice) AS total FROM Orders WHER
 $totalYearlySales = selectOne("SELECT SUM(TotalPrice) AS total FROM Orders WHERE YEAR(date) = YEAR(CURDATE())")['total'] ?? 0;
 
 ?>
+
 <body class="page-sidebar-collapsed">
     <div class="page-container">
         <div class="page-content">
@@ -35,6 +36,9 @@ $totalYearlySales = selectOne("SELECT SUM(TotalPrice) AS total FROM Orders WHERE
                                             <h5 class="card-title"><?php echo number_format($totalProducts); ?></h5>
                                             <p class="stats-text">Total Products</p>
                                         </div>
+                                        <div class="stats-icon change-success">
+                                            <i data-feather="inbox"></i>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -44,6 +48,9 @@ $totalYearlySales = selectOne("SELECT SUM(TotalPrice) AS total FROM Orders WHERE
                                         <div class="stats-info">
                                             <h5 class="card-title"><?php echo number_format($totalClients); ?></h5>
                                             <p class="stats-text">Total Clients</p>
+                                        </div>
+                                        <div class="stats-icon change-success">
+                                            <i data-feather="users"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -55,6 +62,9 @@ $totalYearlySales = selectOne("SELECT SUM(TotalPrice) AS total FROM Orders WHERE
                                             <h5 class="card-title"><?php echo number_format($totalCategories); ?></h5>
                                             <p class="stats-text">Total Categories</p>
                                         </div>
+                                        <div class="stats-icon change-success">
+                                            <i data-feather="layers">trending_up</i>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -64,6 +74,9 @@ $totalYearlySales = selectOne("SELECT SUM(TotalPrice) AS total FROM Orders WHERE
                                         <div class="stats-info">
                                             <h5 class="card-title"><?php echo number_format($totalOrders); ?></h5>
                                             <p class="stats-text">Total Orders</p>
+                                        </div>
+                                        <div class="stats-icon change-success">
+                                            <i data-feather="box"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -75,6 +88,9 @@ $totalYearlySales = selectOne("SELECT SUM(TotalPrice) AS total FROM Orders WHERE
                                             <h5 class="card-title">₹<?php echo number_format($totalWeeklySales); ?></h5>
                                             <p class="stats-text">Total Weekly Sales</p>
                                         </div>
+                                        <div class="stats-icon change-success">
+                                            <i data-feather="calendar"></i>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -84,6 +100,9 @@ $totalYearlySales = selectOne("SELECT SUM(TotalPrice) AS total FROM Orders WHERE
                                         <div class="stats-info">
                                             <h5 class="card-title">₹<?php echo number_format($totalMonthlySales); ?></h5>
                                             <p class="stats-text">Total Monthly Sales</p>
+                                        </div>
+                                        <div class="stats-icon change-success">
+                                            <i data-feather="calendar"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -95,6 +114,9 @@ $totalYearlySales = selectOne("SELECT SUM(TotalPrice) AS total FROM Orders WHERE
                                             <h5 class="card-title">₹<?php echo number_format($totalYearlySales); ?></h5>
                                             <p class="stats-text">Total Yearly Sales</p>
                                         </div>
+                                        <div class="stats-icon change-success">
+                                            <i data-feather="calendar"></i>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -105,6 +127,9 @@ $totalYearlySales = selectOne("SELECT SUM(TotalPrice) AS total FROM Orders WHERE
                                             <h5 class="card-title">₹<?php echo number_format($totalSales); ?></h5>
                                             <p class="stats-text">Total Payment Received</p>
                                         </div>
+                                        <div class="stats-icon change-success">
+                                            <i data-feather="credit-card"></i>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -113,6 +138,6 @@ $totalYearlySales = selectOne("SELECT SUM(TotalPrice) AS total FROM Orders WHERE
                 </div>
             </div>
         </div>
-<?php
-include pathOf('includes/scripts.php');
-?>
+        <?php
+        include pathOf('includes/scripts.php');
+        ?>

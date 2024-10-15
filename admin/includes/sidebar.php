@@ -14,7 +14,7 @@
                   <a href="<?= urlOf('pages/categories') ?>"><i data-feather="layers"></i>Category</a>
                 </li>
                 <li>
-                  <a href="<?= urlOf('pages/products') ?>"><i data-feather="star"></i>Product</a>
+                  <a href="<?= urlOf('pages/products') ?>"><i data-feather="inbox"></i>Product</a>
                 </li>
                 <li>
                   <a href="<?= urlOf('pages/wishlists') ?>"><i data-feather="heart"></i>Wishlists</a>
