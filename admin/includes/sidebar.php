@@ -2,33 +2,38 @@
               <a class="logo" href="index-2.html">Neo</a>
               <ul class="list-unstyled accordion-menu">
                 <li class="active-page">
-                  <a href="<?= urlOf('index.php') ?>" class="active"><i data-feather="activity"></i>Dashboard<i class="fas fa-chevron-right dropdown-icon"></i></a>
+                  <a href="<?= urlOf('index.php') ?>" class="active"><i data-feather="activity"></i>Dashboard</a>
                 </li>
                 <li>
-                  <a href="<?= urlOf('pages/users') ?>"><i data-feather="aperture"></i>Apps<i class="fas fa-chevron-right dropdown-icon"></i></a>
+                  <a href="<?= urlOf('pages/admins') ?>"><i data-feather="shield"></i>Admins</a>
                 </li>
                 <li>
-                  <a href="<?= urlOf('pages/carts') ?>"><i data-feather="code"></i>UI Kits<i class="fas fa-chevron-right dropdown-icon"></i></a>
+                  <a href="<?= urlOf('pages/clients') ?>"><i data-feather="users"></i>Clients</a>
                 </li>
                 <li>
-                  <a href="<?= urlOf('pages/products') ?>"><i data-feather="box"></i>Products<i class="fas fa-chevron-right dropdown-icon"></i></a>
+                  <a href="<?= urlOf('pages/categories') ?>"><i data-feather="layers"></i>Category</a>
                 </li>
                 <li>
-                  <a href="<?= urlOf('pages/coupons') ?>"><i data-feather="star"></i>Pages<i class="fas fa-chevron-right dropdown-icon"></i></a>
+                  <a href="<?= urlOf('pages/products') ?>"><i data-feather="star"></i>Product</a>
                 </li>
                 <li>
-                  <a href="<?= urlOf('pages/order') ?>"><i data-feather="droplet"></i>Form<i class="fas fa-chevron-right dropdown-icon"></i></a>
+                  <a href="<?= urlOf('pages/wishlists') ?>"><i data-feather="heart"></i>Wishlists</a>
                 </li>
                 <li>
-                  <a href="<?= urlOf('pages/orderdetails') ?>"><i data-feather="grid"></i>Tables<i class="fas fa-chevron-right dropdown-icon"></i></a>
+                  <a href="<?= urlOf('pages/carts') ?>"><i data-feather="shopping-cart"></i>Carts</a>
                 </li>
                 <li>
-                  <a href="<?= urlOf('pages/roles') ?>"><i data-feather="pie-chart"></i>Charts</a>
+                  <a href="<?= urlOf('pages/checkouts') ?>"><i data-feather="shopping-bag"></i>Checkouts</a>
                 </li>
                 <li>
-                  <a href="<?= urlOf('pages/feedbacks') ?>"><i data-feather="pie-chart"></i>Charts</a>
+                  <a href="<?= urlOf('pages/orders') ?>"><i data-feather="box"></i>Order</a>
                 </li>
-                
+                <li>
+                  <a href="<?= urlOf('pages/payments') ?>"><i data-feather="credit-card"></i>Payment</a>
+                </li>
+                <li>
+                  <a href="<?= urlOf('pages/feedbacks ') ?>"><i data-feather="message-circle"></i>Feedback</a>
+                </li>
               </ul>
               <a href="#" id="sidebar-collapsed-toggle"><i data-feather="arrow-right"></i></a>
           </div>
