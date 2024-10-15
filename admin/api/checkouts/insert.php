@@ -27,7 +27,7 @@
     execute($query, $param);
     echo json_encode(["status" => "success", "message" => "Order Submitted Successfully"]);
 
-    $query = "UPDATE carts SET DeletedAt = NOW() WHERE Id = ?";
+    $query = "UPDATE carts SET IsDeleted = -1 WHERE Id = ?";
     $param = [$CartId];
     execute($query, $param);
     echo json_encode(["status" => "success", "message" => "Cart Soft Deleted Successfully"]);
