@@ -120,6 +120,10 @@ include pathOf('includes/navbar.php');
 					</div>
 				</div>
 			</div>
+			<?php
+			include pathOf('includes/footer.php');
+			include pathOf('includes/scripts.php');
+			?>
 			<script>
 				function deleteCartItem(Id) {
 					$.ajax({
@@ -135,7 +139,5 @@ include pathOf('includes/navbar.php');
 				}
 			</script>
 			<?php
-			include pathOf('includes/footer.php');
-			include pathOf('includes/scripts.php');
 			include pathOf('includes/pageend.php');
 			?>

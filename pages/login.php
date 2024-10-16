@@ -46,6 +46,10 @@
                 </div><!-- #primary -->
             </div><!-- #main-content -->
         </div>
+<?php
+    include pathOf('includes/footer.php');
+    include pathOf('includes/scripts.php');
+    ?>
         <script>
     function sendData() {
         var data = {
@@ -62,8 +66,7 @@
         });
     }
 </script>
-<?php
-    include pathOf('includes/footer.php');
-    include pathOf('includes/scripts.php');
+
+    <?php
     include pathOf('includes/pageend.php');
 ?>

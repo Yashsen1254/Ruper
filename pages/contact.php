@@ -18,7 +18,7 @@ include pathOf('includes/navbar.php');
 								</h1>
 							</div>
 							<div class="breadcrumbs">
-								<a href="index-2.html">Home</a><span class="delimiter"></span>Contact Us
+								<a href="<?= urlOf('index.php') ?>">Home</a><span class="delimiter"></span>Contact Us
 							</div>
 						</div>
 					</div>

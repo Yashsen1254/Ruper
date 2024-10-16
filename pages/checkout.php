@@ -2,7 +2,7 @@
 require '../includes/init.php';
 
 $ClientId = $_SESSION['UserId'];
-$carts = select("SELECT carts.*, products.Name, products.Price, products.ImageFileName FROM carts JOIN products ON carts.ProductId = products.Id WHERE carts.ClientId = $ClientId");
+$carts = select("SELECT carts.*, products.Name, products.Price, products.ImageFileName FROM carts JOIN products ON carts.ProductId = products.Id WHERE carts.ClientId = $ClientId AND Carts.IsDeleted = 1");
 
 $totalAmount = 0;
 
@@ -16,7 +16,6 @@ include pathOf('includes/navbar.php');
 
 <body class="shop">
 	<div id="page" class="hfeed page-wrapper">
-
 		<div id="site-main" class="site-main">
 			<div id="main-content" class="main-content">
 				<div id="primary" class="content-area">
@@ -32,7 +31,6 @@ include pathOf('includes/navbar.php');
 							</div>
 						</div>
 					</div>
-
 					<div id="content" class="site-content" role="main">
 						<div class="section-padding">
 							<div class="section-container p-l-r">
@@ -82,14 +80,6 @@ include pathOf('includes/navbar.php');
 															</p>
 														</div>
 													</div>
-													<div class="account-fields">
-														<p class="form-row form-row-wide">
-															<label class="checkbox">
-																<input class="input-checkbox" type="checkbox" name="createaccount" value="1">
-																<span>Create an account?</span>
-															</label>
-														</p>
-													</div>
 												</div>
 											</div>
 											<div class="col-xl-4 col-lg-5 col-md-12 col-12">
@@ -129,7 +119,7 @@ include pathOf('includes/navbar.php');
 															<div class="terms-and-conditions-wrapper">
 																<div class="privacy-policy-text"></div>
 															</div>
-															<button class="button alt" onclick="insertData()">Place order</button>
+															<button class="button alt" type="submit" onclick="insertData()">Place order</button>
 														</div>
 													</div>
 												</div>
@@ -161,6 +151,10 @@ include pathOf('includes/navbar.php');
         </div>
 
 		</div>
+		<?php
+		include pathOf('includes/footer.php');
+		include pathOf('includes/scripts.php');
+		?>
 		<script>
 			function insertData() {
 				var CartId = $('#CartId').val();
@@ -172,7 +166,7 @@ include pathOf('includes/navbar.php');
 				var City = $('#City').val();
 				var StreetAddress = $('#StreetAddress').val();
 				var TotalPrice = '<?= $totalAmount ?>';
-
+				$('#checkoutModal').modal('show');
 				$.ajax({
 					url: '../admin/api/checkouts/insert.php',
 					type: 'POST',
@@ -188,13 +182,10 @@ include pathOf('includes/navbar.php');
 						TotalPrice: TotalPrice
 					},
 					success: function(response) {
-                        $('#checkoutModal').modal('show');
                     }
 				});
 			}
 		</script>
 		<?php
-		include pathOf('includes/footer.php');
-		include pathOf('includes/scripts.php');
 		include pathOf('includes/pageend.php');
 		?>

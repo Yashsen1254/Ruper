@@ -98,7 +98,10 @@ include pathOf('includes/navbar.php');
             </div>
         </div>
     </div>
-
+    <?php
+    include pathOf('includes/footer.php');
+    include pathOf('includes/scripts.php');
+    ?>
     <script>
         function addToWishlist(ProductId) {
             var isLoggedIn = <?= isset($_SESSION['UserId']) ? 'true' : 'false' ?>;
@@ -125,10 +128,6 @@ include pathOf('includes/navbar.php');
             });
         }
     </script>
-
     <?php
-    include pathOf('includes/footer.php');
-    include pathOf('includes/scripts.php');
     include pathOf('includes/pageend.php');
     ?>
-</body>

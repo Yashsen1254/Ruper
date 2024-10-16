@@ -19,7 +19,7 @@ include pathOf('includes/navbar.php');
                                 <h1 class="text-title-heading"></h1>
                             </div>
                             <div class="breadcrumbs">
-                                <a href="index-2.html">Home</a><span class="delimiter"></span><a href="shop-grid-left.html">Shop</a>
+                                <a href="<?= urlOf('index.php') ?>">Home</a><span class="delimiter"></span><a href="<?= urlOf('pages/shop.php') ?>">Shop</a>
                             </div>
                         </div>
                     </div>

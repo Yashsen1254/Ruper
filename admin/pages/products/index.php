@@ -68,6 +68,9 @@ include pathOf('includes/navbar.php');
       </div>
     </div>
   </div>
+  <?php
+  include pathOf('includes/scripts.php');
+  ?>
   <script>
     function deleteData(Id) {
       $.ajax({
@@ -92,5 +95,5 @@ include pathOf('includes/navbar.php');
     }
   </script>
   <?php
-  include pathOf('includes/scripts.php');
+  include pathOf('includes/pageend.php');
   ?>

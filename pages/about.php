@@ -16,7 +16,7 @@
 									</h1>
 								</div>
 								<div class="breadcrumbs">
-									<a href="index-2.html">Home</a><span class="delimiter"></span>About Us
+									<a href="<?= urlOf('index.php') ?>">Home</a><span class="delimiter"></span>About Us
 								</div>
 							</div>
 						</div>

@@ -66,8 +66,10 @@ include pathOf('includes/navbar.php');
                 </div><!-- #primary -->
             </div><!-- #main-content -->
         </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
+        <?php
+        include pathOf('includes/footer.php');
+        include pathOf('includes/scripts.php');
+        ?>
         <script>
             function addToCart(ProductId) {
                 var isLoggedIn = <?= isset($_SESSION['UserId']) ? 'true' : 'false' ?>;
@@ -122,9 +124,5 @@ include pathOf('includes/navbar.php');
         </script>
 
         <?php
-        include pathOf('includes/footer.php');
-        include pathOf('includes/scripts.php');
         include pathOf('includes/pageend.php');
         ?>
-    </div>
-</body>
