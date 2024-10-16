@@ -18,6 +18,7 @@ include pathOf('includes/sidebar.php');
                             <div class="card-body">
                                 <h5 class="card-title">Admin Table</h5>
                                 <a href="add.php" class="btn btn-outline-light">Add</a>
+                                <br><br><br>
                                 <table id="zero-conf" class="display" style="width:100%">
                                     <thead>
                                         <tr>

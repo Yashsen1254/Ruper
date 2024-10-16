@@ -14,7 +14,7 @@ include pathOf('includes/navbar.php');
       <div class="main-wrapper">
         <h1 class="card-title">Products</h1>
         <a href="add.php" class="btn btn-outline-light">Add</a>
-
+        <br><br><br>
         <div class="row">
           <?php foreach ($products as $product) { ?>
             <div class="col-sm-12 col-md-4">

@@ -212,13 +212,13 @@
 																	<div class="banner-wrapper-infor">
 																		<div class="info">
 																			<div class="content">
-																				<a class="link-title" href="<?= urlOf('pages/shop.php') ?>">') ?>">
+																				<a class="link-title" href="<?= urlOf('pages/shop.php') ?>">
 																					<h3 class="title-banner">Let the adventure<br> begin. </h3>
 																				</a>
 																				<div class="banner-image-description">
 																					Sed lectus. Aliquam lorem ante, <br>dapibus in, viverra quis, feugiat a, tellus
 																				</div>
-																				<a class="button button-outline" href="<?= urlOf('pages/shop.php') ?>">') ?>">SHOP NOW</a>
+																				<a class="button button-outline" href="<?= urlOf('pages/shop.php') ?>">SHOP NOW</a>
 																			</div>
 																		</div>
 																	</div>
@@ -242,8 +242,8 @@
 																	<div class="banner-wrapper-infor">
 																		<div class="info">
 																			<div class="content">
-																				<a class="link-title" href="<?= urlOf('pages/shop.php') ?>">') ?>">
-																					<h3 class="title-banner">UP TO <span>20% OFF</span></h3>
+																				<a class="link-title" href="<?= urlOf('pages/shop.php') ?>">
+																				<a class="button button-outline" href="<?= urlOf('pages/shop.php') ?>">SHOP NOW</a>
 																				</a>
 																				<div class="banner-image-description">
 																					Don't miss savings on bedroom, living,
@@ -301,7 +301,6 @@
 															<div class="video-text">
 																<h2 class="title">From bottle <br>to chair</h2>
 																<div class="description">In our design and production processes, we are always looking at where environmental thinking and economic improvement intersect – resulting in minimal waste in every aspect. The way we utilise PET Technology, emphasizes this vision.</div>
-																<a href="#" class="button button-white">OUR STORIES</a>
 															</div>
 														</div>
 													</div>
@@ -347,7 +346,7 @@
 																Flexible Payment
 															</h3>
 															<p class="box-description">
-																Pay with Multiple Credit Cards
+																Pay with Cash On Delevery
 															</p>
 														</div>
 													</div>

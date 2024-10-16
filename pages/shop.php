@@ -28,9 +28,6 @@ include pathOf('includes/navbar.php');
                                 <div class="row">
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-12">
                                         <div class="products-topbar clearfix">
-                                            <div class="products-topbar-left">
-                                                <div class="products-count">Showing all 21 results</div>
-                                            </div>
                                         </div>
                                         <div class="tab-content">
                                             <div class="tab-pane fade show active" id="layout-grid" role="tabpanel">

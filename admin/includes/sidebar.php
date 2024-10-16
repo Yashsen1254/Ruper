@@ -1,5 +1,5 @@
 <div class="page-sidebar">
-              <a class="logo" href="index-2.html">Neo</a>
+              <a class="logo" href="<?= urlOf('index.php') ?>">Ruper</a>
               <ul class="list-unstyled accordion-menu">
                 <li class="active-page">
                   <a href="<?= urlOf('index.php') ?>" class="active"><i data-feather="activity"></i>Dashboard</a>

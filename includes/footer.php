@@ -15,13 +15,10 @@
 											<div class="block-content">
 												<ul>
 													<li>
-														<a href="page-contact.html">616.774.0561</a>
+														<a href="page-contact.html">6167740561</a>
 													</li>
 													<li>
-														<a href="page-contact.html">866.453.4748</a>
-													</li>
-													<li>
-														<a href="page-contact.html">HR Fax: 810.222.5439</a>
+														<a href="page-contact.html">8664534748</a>
 													</li>
 													<li>
 														<a href="page-contact.html">sales@ruperfurniture.com</a>
@@ -36,22 +33,19 @@
 											<div class="block-content">
 												<ul>
 													<li>
-														<a href="page-about.html">Sale</a>
+														<a href="<?= urlOf("pages/shop.php") ?>">Sale</a>
 													</li>
 													<li>
-														<a href="page-about.html">Quick Ship</a>
+														<a href="<?= urlOf("pages/shop.php") ?>">Quick Ship</a>
 													</li>
 													<li>
-														<a href="page-about.html">New Designs</a>
+														<a href="<?= urlOf("pages/shop.php") ?>">New Designs</a>
 													</li>
 													<li>
-														<a href="page-about.html">Accidental Fabric Protection</a>
+														<a href="<?= urlOf("pages/shop.php") ?>">Accidental Fabric Protection</a>
 													</li>
 													<li>
-														<a href="page-about.html">Furniture Care</a>
-													</li>
-													<li>
-														<a href="page-about.html">Gift Cards</a>
+														<a href="<?= urlOf("pages/shop.php") ?>">Furniture Care</a>
 													</li>
 												</ul>
 											</div>
@@ -62,17 +56,7 @@
 											<h2 class="block-title">Newsletter</h2>
 											<div class="block-content">
 												<div class="newsletter-text">Enter your email below to be the first to know about new collections and product launches.</div>
-												<form action="#" method="post" class="newsletter-form">
-													<input type="email" name="your-email" value="" size="40" placeholder="Email address">
-													<span class="btn-submit">
-														<input type="submit" value="Subscribe">
-													</span>
-												</form>
 											</div>
-										</div>
-
-										<div class="block block-image">
-											<img width="400" height="79" src="<?= urlOf('assets/media/payments.png') ?>" alt="">
 										</div>
 									</div>
 								</div>
@@ -87,19 +71,12 @@
 								<div class="row">
 									<div class="col-md-6">
 										<div class="footer-left">
-											<p class="copyright">Copyright © 2022. All Right Reserved</p>
+											<a href="https://github.com/Yashsen1254">Yash Sen</a>
 										</div>
 									</div>
 									<div class="col-md-6">
-										<div class="footer-right">
-											<div class="block block-social">
-												<ul class="social-link">
-													<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-													<li><a href="#"><i class="fa fa-instagram"></i></a></li>
-													<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-													<li><a href="#"><i class="fa fa-behance"></i></a></li>
-												</ul>
-											</div>
+										<div class="footer-left">
+											<a href="https://github.com/Mandaviya-Chirag">Chirag Mandaviya</a>
 										</div>
 									</div>
 								</div>
