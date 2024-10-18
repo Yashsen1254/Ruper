@@ -1,7 +1,7 @@
 <?php
 if (isset($_SESSION['UserId'])) {
     $ClientId = $_SESSION['UserId'];
-    $carts = select("SELECT carts.*, products.Name, products.Price, products.ImageFileName FROM carts JOIN products ON carts.ProductId = products.Id WHERE carts.ClientId = $ClientId");
+    $carts = select("SELECT carts.*, products.Name, products.Price, products.ImageFileName FROM carts JOIN products ON carts.ProductId = products.Id WHERE carts.ClientId = $ClientId AND Carts.IsDeleted = 1");
 }
 ?>
 <header id="site-header" class="site-header header-v1">

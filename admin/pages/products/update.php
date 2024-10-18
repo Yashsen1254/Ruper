@@ -18,7 +18,7 @@ include pathOf('includes/sidebar.php');
                     <div class="col">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Insert Products</h5>
+                                <h5 class="card-title">Update Products</h5>
                                 <label for="exampleInputEmail1" class="form-label">Category</label>
                                 <div class="mb-3">
                                     <select class="form-select" id="CategoryId">

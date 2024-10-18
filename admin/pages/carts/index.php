@@ -2,7 +2,7 @@
 require '../../includes/init.php';
 
 $index = 0;
-$carts = select("SELECT Carts.Id, Products.Name AS 'ProductName', Clients.Name AS 'ClientsName' FROM Products INNER JOIN Carts ON Carts.ProductId = Products.Id INNER JOIN Clients ON Carts.ClientId = Clients.Id");
+$carts = select("SELECT Carts.Id, Carts.Quantity, Products.Name AS 'ProductName', Clients.Name AS 'ClientsName' FROM Products INNER JOIN Carts ON Carts.ProductId = Products.Id INNER JOIN Clients ON Carts.ClientId = Clients.Id");
 
 include pathOf('includes/header.php');
 include pathOf('includes/sidebar.php');
@@ -26,6 +26,7 @@ include pathOf('includes/navbar.php');
                                             <th>Sr No.</th>
                                             <th>Product</th>
                                             <th>Client</th>
+                                            <th>Quantity</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -34,6 +35,7 @@ include pathOf('includes/navbar.php');
                                                 <td><?= $index += 1 ?></td>
                                                 <td><?= $cart['ProductName'] ?></td>
                                                 <td><?= $cart['ClientsName'] ?></td>
+                                                <td><?= $cart['Quantity'] ?></td>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>
@@ -42,6 +44,7 @@ include pathOf('includes/navbar.php');
                                             <th>Sr No.</th>
                                             <th>Product</th>
                                             <th>Client</th>
+                                            <th>Quantity</th>
                                         </tr>
                                     </tfoot>
                                 </table>

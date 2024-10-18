@@ -55,7 +55,7 @@ include pathOf('includes/sidebar.php');
         <div class="modal-dialog">
             <div class="modal-content bg-dark">
                 <div class="modal-header text-white">
-                    <h5 class="modal-title">Product Deleted</h5>
+                    <h5 class="modal-title">Product Added</h5>
                 </div>
                 <div class="modal-footer">
                 </div>
@@ -66,7 +66,7 @@ include pathOf('includes/sidebar.php');
         <div class="modal-dialog">
             <div class="modal-content bg-dark">
                 <div class="modal-header text-white">
-                    <h5 class="modal-title">Product Not Deleted</h5>
+                    <h5 class="modal-title">Product Not Added</h5>
                 </div>
                 <div class="modal-footer">
                 </div>

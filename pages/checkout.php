@@ -87,7 +87,8 @@ include pathOf('includes/navbar.php');
 													<div class="checkout-review-order-table">
 														<div class="review-order-title">Product</div>
 														<div class="cart-items">
-															<?php foreach ($carts as $item): ?>
+															<?php
+															foreach ($carts as $item): ?>
 																<input type="hidden" value="<?= $item['Id'] ?>" id="CartId" name="CartId">
 																<div class="cart-item">
 																	<div class="info-product">

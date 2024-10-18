@@ -15,7 +15,7 @@
     $query = "INSERT INTO checkouts (CartId, FirstName, LastName, Email, Phone, ZipCode, City, StreetAddress, TotalPrice) VALUES (?,?,?,?,?,?,?,?,?)";
     $param = [$CartId, $FirstName, $LastName, $Email, $Phone, $ZipCode, $City, $StreetAddress, $TotalPrice];    
     execute($query, $param);
-    echo json_encode(["status" => "success", "message" => "Categories Submitted Successfully"]);
+    // echo json_encode(["status" => "success", "message" => "Categories Submitted Successfully"]);
 
     $currentDate = date('Y-m-d H:i:s');
 
@@ -25,7 +25,7 @@
     $query = "INSERT INTO Orders (CartId, TotalQuantity, TotalPrice, Status, Date) VALUES (?,?,?,?,?)";
     $param = [$CartId, $quantity, $TotalPrice, "Pending", $currentDate];
     execute($query, $param);
-    echo json_encode(["status" => "success", "message" => "Order Submitted Successfully"]);
+    // echo json_encode(["status" => "success", "message" => "Order Submitted Successfully"]);
 
     $query = "UPDATE carts SET IsDeleted = -1 WHERE Id = ?";
     $param = [$CartId];
