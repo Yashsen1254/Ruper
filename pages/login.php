@@ -5,7 +5,6 @@
 ?>
 <body class="page">
     <div id="page" class="hfeed page-wrapper">
-
         <div id="site-main" class="site-main">
             <div id="main-content" class="main-content">
                 <div id="primary" class="content-area">
@@ -21,7 +20,8 @@
                     </div>
                     <div id="content" class="site-content" role="main">
                         <div class="container">
-                            <div class="row justify-content-center align-items-center min-vh-100">
+                            <!-- Added margin-top to bring the form higher on the page -->
+                            <div class="row justify-content-center align-items-center mt-5">
                                 <div class="col-lg-6 col-md-8 col-sm-10">
                                     <div class="card shadow p-4">
                                         <h2 class="text-center mb-4">Login</h2>
@@ -49,8 +49,8 @@
 <?php
     include pathOf('includes/footer.php');
     include pathOf('includes/scripts.php');
-    ?>
-        <script>
+?>
+<script>
     function sendData() {
         var data = {
             Email: $('#Email').val(),
@@ -67,6 +67,6 @@
     }
 </script>
 
-    <?php
+<?php
     include pathOf('includes/pageend.php');
 ?>

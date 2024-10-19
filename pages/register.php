@@ -23,24 +23,25 @@ include pathOf('includes/navbar.php');
 
                     <div id="content" class="site-content" role="main">
                         <div class="container">
-                            <div class="row justify-content-center align-items-center min-vh-100">
+                            <!-- Adjusted margin-top to bring the form higher -->
+                            <div class="row justify-content-center align-items-center mt-5">
                                 <div class="col-lg-6 col-md-8 col-sm-10">
                                     <div class="card shadow p-4">
                                         <h2 class="text-center mb-4">Register</h2>
                                         <div class="form-group">
-                                            <label for="username">Name<span class="required">*</span></label>
+                                            <label for="Name">Name<span class="required">*</span></label>
                                             <input type="text" class="form-control" name="Name" id="Name" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="username">Email<span class="required">*</span></label>
+                                            <label for="Email">Email<span class="required">*</span></label>
                                             <input type="email" class="form-control" name="Email" id="Email" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="username">Username<span class="required">*</span></label>
+                                            <label for="UserName">Username<span class="required">*</span></label>
                                             <input type="text" class="form-control" name="UserName" id="UserName" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="password">Password <span class="required">*</span></label>
+                                            <label for="Password">Password <span class="required">*</span></label>
                                             <input type="password" class="form-control" name="Password" id="Password" required>
                                         </div>
                                         <div class="text-center">
@@ -75,8 +76,8 @@ include pathOf('includes/navbar.php');
         <?php
         include pathOf('includes/footer.php');
         include pathOf('includes/scripts.php');
-
         ?>
+        
         <script>
             function insertData() {
                 var Name = $('#Name').val();
@@ -95,11 +96,12 @@ include pathOf('includes/navbar.php');
                     },
                     success: function(response) {
                         alert("Registered");
-                        window.location.herf = './login.php';
+                        window.location.href = './login.php';
                     }
                 });
             }
         </script>
+        
         <?php
         include pathOf('includes/pageend.php');
         ?>
