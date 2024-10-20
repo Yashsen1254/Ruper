@@ -47,7 +47,7 @@ include pathOf('includes/navbar.php');
                                                                             <div class="btn-wishlist" data-title="Wishlist">
                                                                                 <button type="submit" class="product-btn" onclick="addToWishlist(<?= $product['Id'] ?>)">Add to wishlist</button>
                                                                             </div>
-                                                                            <div class="btn-compare" data-title="More Info">
+                                                                            <div class="btn-compare" data-title="Add To Cart">
                                                                                 <form action="./shop-details.php" method="post">
                                                                                     <input type="hidden" value="<?= $product['Id'] ?>" id="Id" name="Id">
                                                                                     <button type="submit" class="product-btn">Update</button>
